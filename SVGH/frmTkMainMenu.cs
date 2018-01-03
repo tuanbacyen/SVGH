@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SVGH.Database;
+
 
 namespace SVGH
 {
@@ -31,6 +33,11 @@ namespace SVGH
         {
             frmTKSVH frmTKSVHmn = new frmTKSVH();
             frmTKSVHmn.ShowDialog();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            database_helper.openCon();
         }
     }
 }

@@ -10,3 +10,4 @@ D:\Source\Desktop\GitHub\SVGH\SVGH\obj\Debug\SVGH.exe
 D:\Source\Desktop\GitHub\SVGH\SVGH\obj\Debug\SVGH.pdb
 D:\Source\Desktop\GitHub\SVGH\SVGH\obj\Debug\SVGH.frmTkMainMenu.resources
 D:\Source\Desktop\GitHub\SVGH\SVGH\obj\Debug\SVGH.frmTKSVH.resources
+D:\Source\Desktop\GitHub\SVGH\SVGH\bin\Debug\Database\database.mdb
