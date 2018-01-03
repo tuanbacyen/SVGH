@@ -26,5 +26,11 @@ namespace SVGH
         {
             this.Close();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            frmTKSVH frmTKSVHmn = new frmTKSVH();
+            frmTKSVHmn.ShowDialog();
+        }
     }
 }

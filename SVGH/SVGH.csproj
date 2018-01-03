@@ -51,6 +51,12 @@
     <Compile Include="frmTkMainMenu.Designer.cs">
       <DependentUpon>frmTkMainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTKSVH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTKSVH.Designer.cs">
+      <DependentUpon>frmTKSVH.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +67,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmTkMainMenu.resx">
       <DependentUpon>frmTkMainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTKSVH.resx">
+      <DependentUpon>frmTKSVH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
