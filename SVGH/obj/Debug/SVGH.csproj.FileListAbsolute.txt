@@ -1,0 +1,11 @@
+D:\Source\Desktop\GitHub\SVGH\SVGH\obj\Debug\SVGH.csprojResolveAssemblyReference.cache
+D:\Source\Desktop\GitHub\SVGH\SVGH\obj\Debug\SVGH.Main.resources
+D:\Source\Desktop\GitHub\SVGH\SVGH\obj\Debug\SVGH.Properties.Resources.resources
+D:\Source\Desktop\GitHub\SVGH\SVGH\obj\Debug\SVGH.csproj.GenerateResource.Cache
+D:\Source\Desktop\GitHub\SVGH\SVGH\obj\Debug\SVGH.csproj.CoreCompileInputs.cache
+D:\Source\Desktop\GitHub\SVGH\SVGH\bin\Debug\SVGH.exe.config
+D:\Source\Desktop\GitHub\SVGH\SVGH\bin\Debug\SVGH.exe
+D:\Source\Desktop\GitHub\SVGH\SVGH\bin\Debug\SVGH.pdb
+D:\Source\Desktop\GitHub\SVGH\SVGH\obj\Debug\SVGH.exe
+D:\Source\Desktop\GitHub\SVGH\SVGH\obj\Debug\SVGH.pdb
+D:\Source\Desktop\GitHub\SVGH\SVGH\obj\Debug\SVGH.frmTkMainMenu.resources
