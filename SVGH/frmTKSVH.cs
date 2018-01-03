@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SVGH.Database;
 
 namespace SVGH
 {
@@ -27,9 +28,46 @@ namespace SVGH
 
         }
 
+        private void radioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            checkShowColumn();
+        }
+
+        private void checkShowColumn()
+        {
+            if (rdvn.Checked)
+            {
+                dtgSVH.Columns["TenVN"].Visible = false;
+                dtgSVH.Columns["TenKH"].Visible = true;
+            }
+            else if (rdkh.Checked)
+            {
+                dtgSVH.Columns["TenVN"].Visible = true;
+                dtgSVH.Columns["TenKH"].Visible = false;
+            }
+            else if (rdch.Checked)
+            {
+                dtgSVH.Columns["TenVN"].Visible = true;
+                dtgSVH.Columns["TenKH"].Visible = true;
+            }
+        }
+
+        private void frmTKSVH_Load(object sender, EventArgs e)
+        {
+            showdata();
+        }
+
+        #region
         private void xemct()
         {
 
         }
+
+        private void showdata()
+        {
+            string sql = "SELECT TenVN,TenKH FROM tblSVH;";
+            dtgSVH.DataSource = database_helper.GetDataTable(sql);
+        }
+        #endregion
     }
 }
