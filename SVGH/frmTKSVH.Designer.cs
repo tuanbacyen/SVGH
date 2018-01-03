@@ -29,24 +29,25 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.imgLoad = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rdch = new System.Windows.Forms.RadioButton();
             this.rdkh = new System.Windows.Forms.RadioButton();
             this.rdvn = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbNhom = new System.Windows.Forms.ComboBox();
+            this.cbPVKC = new System.Windows.Forms.ComboBox();
             this.dtgSVH = new System.Windows.Forms.DataGridView();
-            this.TenVN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.TenKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenVN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_SVH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLoad)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgSVH)).BeginInit();
             this.SuspendLayout();
@@ -56,10 +57,10 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.imgLoad);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.dtgSVH);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtSearch);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(11, 11);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
@@ -69,15 +70,16 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             // 
-            // pictureBox1
+            // imgLoad
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.pictureBox1.Location = new System.Drawing.Point(308, 173);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(274, 170);
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
+            this.imgLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.imgLoad.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.imgLoad.Location = new System.Drawing.Point(308, 173);
+            this.imgLoad.Name = "imgLoad";
+            this.imgLoad.Size = new System.Drawing.Size(274, 170);
+            this.imgLoad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgLoad.TabIndex = 4;
+            this.imgLoad.TabStop = false;
             // 
             // groupBox2
             // 
@@ -87,8 +89,8 @@
             this.groupBox2.Controls.Add(this.rdvn);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.comboBox2);
-            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.cbNhom);
+            this.groupBox2.Controls.Add(this.cbPVKC);
             this.groupBox2.Location = new System.Drawing.Point(308, 15);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
@@ -155,23 +157,28 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Phạm vi ký chủ";
             // 
-            // comboBox2
+            // cbNhom
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(87, 124);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(187, 21);
-            this.comboBox2.TabIndex = 4;
+            this.cbNhom.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbNhom.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbNhom.FormattingEnabled = true;
+            this.cbNhom.Location = new System.Drawing.Point(87, 124);
+            this.cbNhom.Margin = new System.Windows.Forms.Padding(2);
+            this.cbNhom.Name = "cbNhom";
+            this.cbNhom.Size = new System.Drawing.Size(187, 21);
+            this.cbNhom.TabIndex = 4;
+            this.cbNhom.SelectedIndexChanged += new System.EventHandler(this.cbNhom_SelectedIndexChanged);
             // 
-            // comboBox1
+            // cbPVKC
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(87, 99);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(187, 21);
-            this.comboBox1.TabIndex = 3;
+            this.cbPVKC.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbPVKC.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbPVKC.FormattingEnabled = true;
+            this.cbPVKC.Location = new System.Drawing.Point(87, 99);
+            this.cbPVKC.Margin = new System.Windows.Forms.Padding(2);
+            this.cbPVKC.Name = "cbPVKC";
+            this.cbPVKC.Size = new System.Drawing.Size(187, 21);
+            this.cbPVKC.TabIndex = 3;
             // 
             // dtgSVH
             // 
@@ -183,8 +190,9 @@
             this.dtgSVH.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgSVH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgSVH.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TenKH,
             this.TenVN,
-            this.TenKH});
+            this.ID_SVH});
             this.dtgSVH.Location = new System.Drawing.Point(8, 57);
             this.dtgSVH.Margin = new System.Windows.Forms.Padding(2);
             this.dtgSVH.Name = "dtgSVH";
@@ -192,30 +200,17 @@
             this.dtgSVH.RowTemplate.Height = 24;
             this.dtgSVH.Size = new System.Drawing.Size(289, 283);
             this.dtgSVH.TabIndex = 2;
+            this.dtgSVH.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgSVH_CellClick);
             // 
-            // TenVN
+            // txtSearch
             // 
-            this.TenVN.DataPropertyName = "TenVN";
-            this.TenVN.HeaderText = "Tên Việt Nam";
-            this.TenVN.Name = "TenVN";
-            this.TenVN.ReadOnly = true;
-            // 
-            // TenKH
-            // 
-            this.TenKH.DataPropertyName = "TenKH";
-            this.TenKH.HeaderText = "Tên khoa học";
-            this.TenKH.Name = "TenKH";
-            this.TenKH.ReadOnly = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(9, 34);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(288, 20);
-            this.textBox1.TabIndex = 1;
+            this.txtSearch.Location = new System.Drawing.Point(9, 34);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(288, 20);
+            this.txtSearch.TabIndex = 1;
             // 
             // label1
             // 
@@ -251,6 +246,28 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // TenKH
+            // 
+            this.TenKH.DataPropertyName = "TenKH";
+            this.TenKH.HeaderText = "Tên khoa học";
+            this.TenKH.Name = "TenKH";
+            this.TenKH.ReadOnly = true;
+            // 
+            // TenVN
+            // 
+            this.TenVN.DataPropertyName = "TenVN";
+            this.TenVN.HeaderText = "Tên Việt Nam";
+            this.TenVN.Name = "TenVN";
+            this.TenVN.ReadOnly = true;
+            // 
+            // ID_SVH
+            // 
+            this.ID_SVH.DataPropertyName = "ID_SVH";
+            this.ID_SVH.HeaderText = "ID";
+            this.ID_SVH.Name = "ID_SVH";
+            this.ID_SVH.ReadOnly = true;
+            this.ID_SVH.Visible = false;
+            // 
             // frmTKSVH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -264,7 +281,7 @@
             this.Load += new System.EventHandler(this.frmTKSVH_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLoad)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgSVH)).EndInit();
@@ -275,21 +292,22 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox imgLoad;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton rdch;
         private System.Windows.Forms.RadioButton rdkh;
         private System.Windows.Forms.RadioButton rdvn;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbNhom;
+        private System.Windows.Forms.ComboBox cbPVKC;
         private System.Windows.Forms.DataGridView dtgSVH;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenVN;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenKH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenVN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_SVH;
     }
 }

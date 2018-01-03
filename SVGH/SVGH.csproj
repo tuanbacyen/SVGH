@@ -117,6 +117,7 @@
     <Content Include="Database\database.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\imgdefault.jpg" />
     <Content Include="Resources\timkiemall.jpg" />
     <Content Include="Resources\timkiembenhhai.png" />
     <Content Include="Resources\timkiemnangcao.png" />
