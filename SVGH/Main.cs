@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SVGH.MySystem;
 
 namespace SVGH
 {
@@ -26,7 +27,7 @@ namespace SVGH
 
         private void thoátKhỏiTrươngTrìnhToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            mySys.ExitApp();
         }
 
         private void thựcĐơnChínhToolStripMenuItem_Click(object sender, EventArgs e)

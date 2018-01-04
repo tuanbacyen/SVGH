@@ -1,24 +1,24 @@
-﻿using System;
+﻿using SVGH.Database;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SVGH.Database;
-using System.IO;
 
 namespace SVGH
 {
-    public partial class frmTKSVH : Form
+    public partial class frmBHC : Form
     {
         #region
         int showName = 0;
         #endregion
 
-        public frmTKSVH()
+        public frmBHC()
         {
             InitializeComponent();
         }
@@ -33,6 +33,14 @@ namespace SVGH
 
         }
 
+        private void cbPVKC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbPVKC.Items.Count > 0)
+            {
+                showdata();
+            }
+        }
+
         private void radioButton_CheckedChanged(object sender, EventArgs e)
         {
             checkShowColumn();
@@ -42,55 +50,38 @@ namespace SVGH
         {
             if (rdvn.Checked)
             {
-                dtgSVH.Columns["TenVN"].Visible = true;
-                dtgSVH.Columns["TenKH"].Visible = false;
+                dtgBHC.Columns["TenVN"].Visible = true;
+                dtgBHC.Columns["TenKH"].Visible = false;
                 showName = 0;
             }
             else if (rdkh.Checked)
             {
-                dtgSVH.Columns["TenVN"].Visible = false;
-                dtgSVH.Columns["TenKH"].Visible = true;
+                dtgBHC.Columns["TenVN"].Visible = false;
+                dtgBHC.Columns["TenKH"].Visible = true;
                 showName = 1;
             }
             else if (rdch.Checked)
             {
-                dtgSVH.Columns["TenVN"].Visible = true;
-                dtgSVH.Columns["TenKH"].Visible = true;
+                dtgBHC.Columns["TenVN"].Visible = true;
+                dtgBHC.Columns["TenKH"].Visible = true;
                 showName = 2;
             }
             showdata();
         }
 
-        private void frmTKSVH_Load(object sender, EventArgs e)
+        private void frmBHC_Load(object sender, EventArgs e)
         {
             showdata();
-            loadNhom();
             loadPhamVi();
         }
 
-        private void cbNhom_SelectedIndexChanged(object sender, EventArgs e)
+        private void dtgBHC_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (cbNhom.Items.Count > 0)
+            if (dtgBHC.Rows.Count > 0)
             {
-                showdata();
+                getImageToShow(dtgBHC.Rows[e.RowIndex].Cells["ID_BHChinh"].Value.ToString());
             }
-        }
-
-        private void dtgSVH_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dtgSVH.Rows.Count > 0)
-            {
-                getImageToShow(dtgSVH.Rows[e.RowIndex].Cells["ID_SVH"].Value.ToString());
-            }
-            dtgSVH.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-        }
-
-        private void cbPVKC_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbPVKC.Items.Count > 0)
-            {
-                showdata();
-            }
+            dtgBHC.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -106,35 +97,20 @@ namespace SVGH
 
         private void showdata()
         {
-            string idnhom = "";
             string idCay = "";
 
-            if (cbNhom.Items.Count > 0)
-            {
-                idnhom = cbNhom.SelectedValue.ToString();
-            }
             if (cbPVKC.Items.Count > 0)
             {
                 idCay = cbPVKC.SelectedValue.ToString();
             }
 
-            string sql = "SELECT ID_SVH,TenVN,TenKH FROM tblSVH ";
+            string sql = "SELECT ID_BHChinh,TenVN,TenKH FROM tblBHChinh ";
             bool check = false;
 
-            if (idnhom != "all" && idnhom != "")
-            {
-                sql = sql + " where ID_NhomSVH = '" + idnhom + "' ";
-                check = true;
-            }
-
-            if (idCay != "all" && idCay != "" && check == false)
+            if (idCay != "all" && idCay != "")
             {
                 sql = sql + " where ID_Cay = '" + idCay + "' ";
                 check = true;
-            }
-            else if (idCay != "all" && idCay != "" && check == true)
-            {
-                sql = sql + " and ID_Cay = '" + idCay + "' ";
             }
 
             sql = sql + getSearch(check, showName);
@@ -152,11 +128,11 @@ namespace SVGH
                 sql = sql + " ORDER BY TenVN ASC";
             }
 
-            dtgSVH.DataSource = database_helper.GetDataTable(sql);
-            if (dtgSVH.Rows.Count > 0)
+            dtgBHC.DataSource = database_helper.GetDataTable(sql);
+            if (dtgBHC.Rows.Count > 0)
             {
-                dtgSVH.Rows[0].Selected = true;
-                getImageToShow(dtgSVH.Rows[0].Cells["ID_SVH"].Value.ToString());
+                dtgBHC.Rows[0].Selected = true;
+                getImageToShow(dtgBHC.Rows[0].Cells["ID_BHChinh"].Value.ToString());
             }
             else
             {
@@ -207,22 +183,9 @@ namespace SVGH
             cbPVKC.DisplayMember = "TenCay";
         }
 
-        private void loadNhom()
-        {
-            string sql = "SELECT ID_NhomSVH,TenNhom FROM tblNhomSVH;";
-            DataTable db = database_helper.GetDataTable(sql);
-            DataRow dr = db.NewRow();
-            dr[0] = "all";
-            dr[1] = "Chọn tất cả";
-            db.Rows.InsertAt(dr, 0);
-            cbNhom.DataSource = db;
-            cbNhom.ValueMember = "ID_NhomSVH";
-            cbNhom.DisplayMember = "TenNhom";
-        }
-
         private void getImageToShow(string id)
         {
-            string sql = "SELECT img_Data from tblImage where SVH_ID = " + id + " and isShow = 1";
+            string sql = "SELECT img_Data from tblAnhBHC where ID_BHChinh = " + id + " and isShow = 1";
             DataTable db = database_helper.GetDataTable(sql);
             if (db.Rows.Count > 0)
             {

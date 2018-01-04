@@ -63,6 +63,16 @@ namespace SVGH.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap imgdefault {
+            get {
+                object obj = ResourceManager.GetObject("imgdefault", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap timkiemall {
             get {
                 object obj = ResourceManager.GetObject("timkiemall", resourceCulture);

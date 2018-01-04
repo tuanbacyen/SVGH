@@ -61,6 +61,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\database_helper.cs" />
+    <Compile Include="frmBHC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBHC.Designer.cs">
+      <DependentUpon>frmBHC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChiTiet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChiTiet.Designer.cs">
+      <DependentUpon>frmChiTiet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSHC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSHC.Designer.cs">
+      <DependentUpon>frmSHC.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTkMainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,8 +97,18 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="MySystem\mySys.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmBHC.resx">
+      <DependentUpon>frmBHC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChiTiet.resx">
+      <DependentUpon>frmChiTiet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSHC.resx">
+      <DependentUpon>frmSHC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmTkMainMenu.resx">
       <DependentUpon>frmTkMainMenu.cs</DependentUpon>
     </EmbeddedResource>

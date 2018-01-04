@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SVGH.Database;
-
+using SVGH.MySystem;
 
 namespace SVGH
 {
@@ -21,7 +21,7 @@ namespace SVGH
 
         private void btnExitProgram_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            mySys.ExitApp();
         }
 
         private void ExitForm_Click(object sender, EventArgs e)
@@ -38,6 +38,18 @@ namespace SVGH
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             database_helper.openCon();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            frmSHC frmSHCmn = new frmSHC();
+            frmSHCmn.ShowDialog();
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            frmBHC frmBHCmn = new frmBHC();
+            frmBHCmn.ShowDialog();
         }
     }
 }

@@ -47,6 +47,7 @@ namespace SVGH.Database
             DataTable db = new DataTable();
             try
             {
+                da.AcceptChangesDuringFill = true;
                 da.Fill(db);
 
             }
