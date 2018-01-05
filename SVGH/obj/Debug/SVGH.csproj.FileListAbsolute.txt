@@ -14,3 +14,4 @@ D:\Source\Desktop\GitHub\SVGH\SVGH\bin\Debug\Database\database.mdb
 D:\Source\Desktop\GitHub\SVGH\SVGH\obj\Debug\SVGH.frmBHC.resources
 D:\Source\Desktop\GitHub\SVGH\SVGH\obj\Debug\SVGH.frmChiTiet.resources
 D:\Source\Desktop\GitHub\SVGH\SVGH\obj\Debug\SVGH.frmSHC.resources
+D:\Source\Desktop\GitHub\SVGH\SVGH\obj\Debug\SVGH.exe.licenses

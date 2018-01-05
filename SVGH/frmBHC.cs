@@ -14,9 +14,7 @@ namespace SVGH
 {
     public partial class frmBHC : Form
     {
-        #region
-        int showName = 0;
-        #endregion
+        int idex = 0;
 
         public frmBHC()
         {
@@ -41,34 +39,6 @@ namespace SVGH
             }
         }
 
-        private void radioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            checkShowColumn();
-        }
-
-        private void checkShowColumn()
-        {
-            if (rdvn.Checked)
-            {
-                dtgBHC.Columns["TenVN"].Visible = true;
-                dtgBHC.Columns["TenKH"].Visible = false;
-                showName = 0;
-            }
-            else if (rdkh.Checked)
-            {
-                dtgBHC.Columns["TenVN"].Visible = false;
-                dtgBHC.Columns["TenKH"].Visible = true;
-                showName = 1;
-            }
-            else if (rdch.Checked)
-            {
-                dtgBHC.Columns["TenVN"].Visible = true;
-                dtgBHC.Columns["TenKH"].Visible = true;
-                showName = 2;
-            }
-            showdata();
-        }
-
         private void frmBHC_Load(object sender, EventArgs e)
         {
             showdata();
@@ -77,11 +47,16 @@ namespace SVGH
 
         private void dtgBHC_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dtgBHC.Rows.Count > 0)
+            if (dtgBHC.Rows.Count > 0 && e.RowIndex != -1)
             {
                 getImageToShow(dtgBHC.Rows[e.RowIndex].Cells["ID_BHChinh"].Value.ToString());
+                idex = e.RowIndex;
             }
-            dtgBHC.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
+        private void dtgBHC_Sorted(object sender, EventArgs e)
+        {
+            getImageToShow(dtgBHC.Rows[idex].Cells["ID_BHChinh"].Value.ToString());
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -104,7 +79,7 @@ namespace SVGH
                 idCay = cbPVKC.SelectedValue.ToString();
             }
 
-            string sql = "SELECT ID_BHChinh,TenVN,TenKH FROM tblBHChinh ";
+            string sql = "SELECT ID_BHChinh,TenVN FROM tblBHChinh ";
             bool check = false;
 
             if (idCay != "all" && idCay != "")
@@ -113,25 +88,15 @@ namespace SVGH
                 check = true;
             }
 
-            sql = sql + getSearch(check, showName);
+            sql = sql + getSearch(check);
 
-            if (showName == 0)
-            {
-                sql = sql + " ORDER BY TenKH ASC";
-            }
-            else if (showName == 1)
-            {
-                sql = sql + " ORDER BY TenKH ASC";
-            }
-            else if (showName == 2)
-            {
-                sql = sql + " ORDER BY TenVN ASC";
-            }
+            sql = sql + " ORDER BY TenVN ASC";
 
             dtgBHC.DataSource = database_helper.GetDataTable(sql);
             if (dtgBHC.Rows.Count > 0)
             {
                 dtgBHC.Rows[0].Selected = true;
+                idex = 0;
                 getImageToShow(dtgBHC.Rows[0].Cells["ID_BHChinh"].Value.ToString());
             }
             else
@@ -140,23 +105,12 @@ namespace SVGH
             }
         }
 
-        private string getSearch(bool c, int l)
+        private string getSearch(bool c)
         {
             string sql = "";
             if (txtSearch.Text != "")
             {
-                if (l == 0)
-                {
-                    sql = " TenVN like '%" + txtSearch.Text.Trim() + "%' or TenKH like '%" + txtSearch.Text.Trim() + "%' ";
-                }
-                else if (l == 1)
-                {
-                    sql = " TenKH like '%" + txtSearch.Text.Trim() + "%' ";
-                }
-                else if (l == 2)
-                {
-                    sql = " TenVN like '%" + txtSearch.Text.Trim() + "%' ";
-                }
+                sql = " TenVN like '%" + txtSearch.Text.Trim() + "%' ";
 
                 if (c == true)
                 {

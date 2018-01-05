@@ -185,9 +185,11 @@
             this.dtgSHC.Name = "dtgSHC";
             this.dtgSHC.ReadOnly = true;
             this.dtgSHC.RowTemplate.Height = 24;
+            this.dtgSHC.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgSHC.Size = new System.Drawing.Size(311, 285);
             this.dtgSHC.TabIndex = 2;
             this.dtgSHC.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgBHC_CellClick);
+            this.dtgSHC.Sorted += new System.EventHandler(this.dtgSHC_Sorted);
             // 
             // TenKH
             // 

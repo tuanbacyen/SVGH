@@ -16,6 +16,7 @@ namespace SVGH
     {
         #region
         int showName = 0;
+        int idex = 0;
         #endregion
 
         public frmSHC()
@@ -77,11 +78,16 @@ namespace SVGH
 
         private void dtgBHC_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dtgSHC.Rows.Count > 0)
+            if (dtgSHC.Rows.Count > 0 && e.RowIndex != -1)
             {
                 getImageToShow(dtgSHC.Rows[e.RowIndex].Cells["ID_SHChinh"].Value.ToString());
+                idex = e.RowIndex;
             }
-            dtgSHC.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
+        private void dtgSHC_Sorted(object sender, EventArgs e)
+        {
+            getImageToShow(dtgSHC.Rows[idex].Cells["ID_SHChinh"].Value.ToString());
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -132,6 +138,7 @@ namespace SVGH
             if (dtgSHC.Rows.Count > 0)
             {
                 dtgSHC.Rows[0].Selected = true;
+                idex = 0;
                 getImageToShow(dtgSHC.Rows[0].Cells["ID_SHChinh"].Value.ToString());
             }
             else

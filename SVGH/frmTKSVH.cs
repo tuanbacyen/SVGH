@@ -16,6 +16,7 @@ namespace SVGH
     {
         #region
         int showName = 0;
+        int idex = 0;
         #endregion
 
         public frmTKSVH()
@@ -78,11 +79,18 @@ namespace SVGH
 
         private void dtgSVH_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dtgSVH.Rows.Count > 0)
+
+            if (dtgSVH.Rows.Count > 0 && e.RowIndex != -1)
             {
                 getImageToShow(dtgSVH.Rows[e.RowIndex].Cells["ID_SVH"].Value.ToString());
+                idex = e.RowIndex;
             }
-            dtgSVH.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+        }
+
+        private void dtgSVH_Sorted(object sender, EventArgs e)
+        {
+            getImageToShow(dtgSVH.Rows[idex].Cells["ID_SVH"].Value.ToString());
         }
 
         private void cbPVKC_SelectedIndexChanged(object sender, EventArgs e)
@@ -160,7 +168,7 @@ namespace SVGH
             }
             else
             {
-                imgLoad.Image = null;
+                txtTVN.Text = txtTKH.Text = txtTVN.Text = txtTVN.Text = txtTD.Text = "";
             }
         }
 
@@ -209,7 +217,7 @@ namespace SVGH
 
         private void loadNhom()
         {
-            string sql = "SELECT ID_NhomSVH,TenNhom FROM tblNhomSVH;";
+            string sql = "SELECT ID_NhomSVH,TenNhom FROM tblNhomSVH";
             DataTable db = database_helper.GetDataTable(sql);
             DataRow dr = db.NewRow();
             dr[0] = "all";
@@ -222,30 +230,19 @@ namespace SVGH
 
         private void getImageToShow(string id)
         {
-            string sql = "SELECT img_Data from tblImage where SVH_ID = " + id + " and isShow = 1";
-            DataTable db = database_helper.GetDataTable(sql);
-            if (db.Rows.Count > 0)
-            {
-                try
-                {
-                    DataRow dr = db.NewRow();
-                    DataRowView drv = db.DefaultView[0];
+            string sqlSVH = "SELECT TenVN,TenKH,ID_Cay,ID_NhomSVH,Tac_Dong FROM tblSVH where ID_SVH =" + id;
+            DataTable db = database_helper.GetDataTable(sqlSVH);
+            txtTVN.Text = db.Rows[0][0].ToString();
+            txtTKH.Text = db.Rows[0][1].ToString();
 
-                    Byte[] i = (byte[])drv[0];
-                    MemoryStream stmBLOBData = new MemoryStream(i);
-                    imgLoad.Image = Image.FromStream(stmBLOBData);
-                }
-                catch (Exception ex)
-                {
-                    imgLoad.Image = Properties.Resources.imgdefault;
-                    MessageBox.Show(ex.ToString());
-                }
-            }
-            else
-            {
-                imgLoad.Image = Properties.Resources.imgdefault;
-            }
+            DataTable dbC = database_helper.GetDataTable("SELECT TenCay FROM tblCay where ID_Cay = '" + db.Rows[0][2].ToString() + "'");
 
+            txtKC.Text = dbC.Rows[0][0].ToString();
+
+            DataTable dbN = database_helper.GetDataTable("SELECT TenNhom FROM tblNhomSVH where ID_NhomSVH = '" + db.Rows[0][3].ToString() + "'");
+            txtN.Text = dbN.Rows[0][0].ToString();
+
+            txtTD.Text = db.Rows[0][4].ToString();
         }
         #endregion
     }
