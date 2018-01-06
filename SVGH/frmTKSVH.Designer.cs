@@ -49,13 +49,13 @@
             this.cbNhom = new System.Windows.Forms.ComboBox();
             this.cbPVKC = new System.Windows.Forms.ComboBox();
             this.dtgSVH = new System.Windows.Forms.DataGridView();
+            this.TenKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenVN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_SVH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.TenKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenVN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_SVH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -329,7 +329,30 @@
             this.dtgSVH.Size = new System.Drawing.Size(510, 362);
             this.dtgSVH.TabIndex = 2;
             this.dtgSVH.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgSVH_CellClick);
+            this.dtgSVH.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgSVH_CellDoubleClick);
             this.dtgSVH.Sorted += new System.EventHandler(this.dtgSVH_Sorted);
+            // 
+            // TenKH
+            // 
+            this.TenKH.DataPropertyName = "TenKH";
+            this.TenKH.HeaderText = "Tên khoa học";
+            this.TenKH.Name = "TenKH";
+            this.TenKH.ReadOnly = true;
+            // 
+            // TenVN
+            // 
+            this.TenVN.DataPropertyName = "TenVN";
+            this.TenVN.HeaderText = "Tên Việt Nam";
+            this.TenVN.Name = "TenVN";
+            this.TenVN.ReadOnly = true;
+            // 
+            // ID_SVH
+            // 
+            this.ID_SVH.DataPropertyName = "ID_SVH";
+            this.ID_SVH.HeaderText = "ID";
+            this.ID_SVH.Name = "ID_SVH";
+            this.ID_SVH.ReadOnly = true;
+            this.ID_SVH.Visible = false;
             // 
             // txtSearch
             // 
@@ -375,28 +398,6 @@
             this.button1.Text = "Xem chi tiết";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // TenKH
-            // 
-            this.TenKH.DataPropertyName = "TenKH";
-            this.TenKH.HeaderText = "Tên khoa học";
-            this.TenKH.Name = "TenKH";
-            this.TenKH.ReadOnly = true;
-            // 
-            // TenVN
-            // 
-            this.TenVN.DataPropertyName = "TenVN";
-            this.TenVN.HeaderText = "Tên Việt Nam";
-            this.TenVN.Name = "TenVN";
-            this.TenVN.ReadOnly = true;
-            // 
-            // ID_SVH
-            // 
-            this.ID_SVH.DataPropertyName = "ID_SVH";
-            this.ID_SVH.HeaderText = "ID";
-            this.ID_SVH.Name = "ID_SVH";
-            this.ID_SVH.ReadOnly = true;
-            this.ID_SVH.Visible = false;
             // 
             // frmTKSVH
             // 

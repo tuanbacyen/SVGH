@@ -15,3 +15,5 @@ D:\Source\Desktop\GitHub\SVGH\SVGH\obj\Debug\SVGH.frmBHC.resources
 D:\Source\Desktop\GitHub\SVGH\SVGH\obj\Debug\SVGH.frmChiTiet.resources
 D:\Source\Desktop\GitHub\SVGH\SVGH\obj\Debug\SVGH.frmSHC.resources
 D:\Source\Desktop\GitHub\SVGH\SVGH\obj\Debug\SVGH.exe.licenses
+D:\Source\Desktop\GitHub\SVGH\SVGH\obj\Debug\SVGH.frmViewImage.resources
+D:\Source\Desktop\GitHub\SVGH\SVGH\obj\Debug\SVGH.frmTKTV.resources

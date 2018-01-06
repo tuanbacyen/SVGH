@@ -35,5 +35,28 @@ namespace SVGH
             frmTkMainMenu tkMainMenu1 = new frmTkMainMenu();
             tkMainMenu1.ShowDialog();
         }
+
+        private void tìmKiếmSâuHạiChínhToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSHC frmSHCmn = new frmSHC();
+            frmSHCmn.ShowDialog();
+        }
+
+        private void tìmKiếmBệnhHạiChínhToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmBHC frmBHCmn = new frmBHC();
+            frmBHCmn.ShowDialog();
+        }
+
+        private void tìmKiếmSinhVậtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTKSVH frmTKSVHmn = new frmTKSVH();
+            frmTKSVHmn.ShowDialog();
+        }
+
+        private void tìmKiếmTheoVùngPhânBốToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

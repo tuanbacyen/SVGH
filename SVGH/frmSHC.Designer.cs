@@ -189,6 +189,7 @@
             this.dtgSHC.Size = new System.Drawing.Size(311, 285);
             this.dtgSHC.TabIndex = 2;
             this.dtgSHC.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgBHC_CellClick);
+            this.dtgSHC.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgSHC_CellDoubleClick);
             this.dtgSHC.Sorted += new System.EventHandler(this.dtgSHC_Sorted);
             // 
             // TenKH

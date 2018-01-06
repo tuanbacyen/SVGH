@@ -37,16 +37,16 @@
             this.lblTB = new System.Windows.Forms.Label();
             this.btnA = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cb = new System.Windows.Forms.CheckBox();
-            this.cbTL = new System.Windows.Forms.CheckBox();
-            this.cbPL = new System.Windows.Forms.CheckBox();
-            this.cbPB = new System.Windows.Forms.CheckBox();
-            this.cbTH = new System.Windows.Forms.CheckBox();
-            this.cbXH = new System.Windows.Forms.CheckBox();
-            this.cbDD = new System.Windows.Forms.CheckBox();
-            this.cbBQ = new System.Windows.Forms.CheckBox();
-            this.cbLSVN = new System.Windows.Forms.CheckBox();
             this.cbPHVN = new System.Windows.Forms.CheckBox();
+            this.cbLSVN = new System.Windows.Forms.CheckBox();
+            this.cbBQ = new System.Windows.Forms.CheckBox();
+            this.cbDD = new System.Windows.Forms.CheckBox();
+            this.cbXH = new System.Windows.Forms.CheckBox();
+            this.cbTH = new System.Windows.Forms.CheckBox();
+            this.cbPB = new System.Windows.Forms.CheckBox();
+            this.cbPL = new System.Windows.Forms.CheckBox();
+            this.cbTL = new System.Windows.Forms.CheckBox();
+            this.cb = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.img)).BeginInit();
@@ -124,6 +124,7 @@
             this.btnA.TabIndex = 5;
             this.btnA.Text = "Xem ảnh lớn";
             this.btnA.UseVisualStyleBackColor = true;
+            this.btnA.Click += new System.EventHandler(this.btnA_Click);
             // 
             // groupBox1
             // 
@@ -145,29 +146,82 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lựa thông tin";
             // 
-            // cb
+            // cbPHVN
             // 
-            this.cb.AutoSize = true;
-            this.cb.Location = new System.Drawing.Point(16, 26);
-            this.cb.Name = "cb";
-            this.cb.Size = new System.Drawing.Size(81, 17);
-            this.cb.TabIndex = 0;
-            this.cb.Text = "Chọn tất cả";
-            this.cb.UseVisualStyleBackColor = true;
-            this.cb.CheckedChanged += new System.EventHandler(this.cb_CheckedChanged);
+            this.cbPHVN.AutoSize = true;
+            this.cbPHVN.Location = new System.Drawing.Point(16, 140);
+            this.cbPHVN.Name = "cbPHVN";
+            this.cbPHVN.Size = new System.Drawing.Size(204, 17);
+            this.cbPHVN.TabIndex = 9;
+            this.cbPHVN.Text = "Tài liệu công bố phát hiện ở Việt Nam";
+            this.cbPHVN.UseVisualStyleBackColor = true;
+            this.cbPHVN.CheckedChanged += new System.EventHandler(this.cbItem_CheckedChanged);
             // 
-            // cbTL
+            // cbLSVN
             // 
-            this.cbTL.AutoSize = true;
-            this.cbTL.Checked = true;
-            this.cbTL.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbTL.Location = new System.Drawing.Point(16, 49);
-            this.cbTL.Name = "cbTL";
-            this.cbTL.Size = new System.Drawing.Size(64, 17);
-            this.cbTL.TabIndex = 1;
-            this.cbTL.Text = "Tên loài";
-            this.cbTL.UseVisualStyleBackColor = true;
-            this.cbTL.CheckedChanged += new System.EventHandler(this.cbItem_CheckedChanged);
+            this.cbLSVN.AutoSize = true;
+            this.cbLSVN.Location = new System.Drawing.Point(16, 117);
+            this.cbLSVN.Name = "cbLSVN";
+            this.cbLSVN.Size = new System.Drawing.Size(162, 17);
+            this.cbLSVN.TabIndex = 8;
+            this.cbLSVN.Text = "Lịch sử phát hiện ở Việt Nam";
+            this.cbLSVN.UseVisualStyleBackColor = true;
+            this.cbLSVN.CheckedChanged += new System.EventHandler(this.cbItem_CheckedChanged);
+            // 
+            // cbBQ
+            // 
+            this.cbBQ.AutoSize = true;
+            this.cbBQ.Location = new System.Drawing.Point(126, 95);
+            this.cbBQ.Name = "cbBQ";
+            this.cbBQ.Size = new System.Drawing.Size(122, 17);
+            this.cbBQ.TabIndex = 7;
+            this.cbBQ.Text = "Giám định bảo quản";
+            this.cbBQ.UseVisualStyleBackColor = true;
+            this.cbBQ.CheckedChanged += new System.EventHandler(this.cbItem_CheckedChanged);
+            // 
+            // cbDD
+            // 
+            this.cbDD.AutoSize = true;
+            this.cbDD.Location = new System.Drawing.Point(16, 164);
+            this.cbDD.Name = "cbDD";
+            this.cbDD.Size = new System.Drawing.Size(278, 17);
+            this.cbDD.TabIndex = 6;
+            this.cbDD.Text = "Đặc điểm chính của pha trưởng thành để nhận dạng";
+            this.cbDD.UseVisualStyleBackColor = true;
+            this.cbDD.CheckedChanged += new System.EventHandler(this.cbItem_CheckedChanged);
+            // 
+            // cbXH
+            // 
+            this.cbXH.AutoSize = true;
+            this.cbXH.Location = new System.Drawing.Point(126, 72);
+            this.cbXH.Name = "cbXH";
+            this.cbXH.Size = new System.Drawing.Size(109, 17);
+            this.cbXH.TabIndex = 5;
+            this.cbXH.Text = "Mức độ xuất hiện";
+            this.cbXH.UseVisualStyleBackColor = true;
+            this.cbXH.CheckedChanged += new System.EventHandler(this.cbItem_CheckedChanged);
+            // 
+            // cbTH
+            // 
+            this.cbTH.AutoSize = true;
+            this.cbTH.Location = new System.Drawing.Point(16, 95);
+            this.cbTH.Name = "cbTH";
+            this.cbTH.Size = new System.Drawing.Size(62, 17);
+            this.cbTH.TabIndex = 4;
+            this.cbTH.Text = "Tác hại";
+            this.cbTH.UseVisualStyleBackColor = true;
+            this.cbTH.CheckedChanged += new System.EventHandler(this.cbItem_CheckedChanged);
+            // 
+            // cbPB
+            // 
+            this.cbPB.AutoSize = true;
+            this.cbPB.Location = new System.Drawing.Point(16, 72);
+            this.cbPB.Name = "cbPB";
+            this.cbPB.Size = new System.Drawing.Size(66, 17);
+            this.cbPB.TabIndex = 3;
+            this.cbPB.Text = "Phân bổ";
+            this.cbPB.UseVisualStyleBackColor = true;
+            this.cbPB.CheckedChanged += new System.EventHandler(this.cbItem_CheckedChanged);
             // 
             // cbPL
             // 
@@ -182,82 +236,29 @@
             this.cbPL.UseVisualStyleBackColor = true;
             this.cbPL.CheckedChanged += new System.EventHandler(this.cbItem_CheckedChanged);
             // 
-            // cbPB
+            // cbTL
             // 
-            this.cbPB.AutoSize = true;
-            this.cbPB.Location = new System.Drawing.Point(16, 72);
-            this.cbPB.Name = "cbPB";
-            this.cbPB.Size = new System.Drawing.Size(66, 17);
-            this.cbPB.TabIndex = 3;
-            this.cbPB.Text = "Phân bổ";
-            this.cbPB.UseVisualStyleBackColor = true;
-            this.cbPB.CheckedChanged += new System.EventHandler(this.cbItem_CheckedChanged);
+            this.cbTL.AutoSize = true;
+            this.cbTL.Checked = true;
+            this.cbTL.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbTL.Location = new System.Drawing.Point(16, 49);
+            this.cbTL.Name = "cbTL";
+            this.cbTL.Size = new System.Drawing.Size(64, 17);
+            this.cbTL.TabIndex = 1;
+            this.cbTL.Text = "Tên loài";
+            this.cbTL.UseVisualStyleBackColor = true;
+            this.cbTL.CheckedChanged += new System.EventHandler(this.cbItem_CheckedChanged);
             // 
-            // cbTH
+            // cb
             // 
-            this.cbTH.AutoSize = true;
-            this.cbTH.Location = new System.Drawing.Point(16, 95);
-            this.cbTH.Name = "cbTH";
-            this.cbTH.Size = new System.Drawing.Size(62, 17);
-            this.cbTH.TabIndex = 4;
-            this.cbTH.Text = "Tác hại";
-            this.cbTH.UseVisualStyleBackColor = true;
-            this.cbTH.CheckedChanged += new System.EventHandler(this.cbItem_CheckedChanged);
-            // 
-            // cbXH
-            // 
-            this.cbXH.AutoSize = true;
-            this.cbXH.Location = new System.Drawing.Point(126, 72);
-            this.cbXH.Name = "cbXH";
-            this.cbXH.Size = new System.Drawing.Size(109, 17);
-            this.cbXH.TabIndex = 5;
-            this.cbXH.Text = "Mức độ xuất hiện";
-            this.cbXH.UseVisualStyleBackColor = true;
-            this.cbXH.CheckedChanged += new System.EventHandler(this.cbItem_CheckedChanged);
-            // 
-            // cbDD
-            // 
-            this.cbDD.AutoSize = true;
-            this.cbDD.Location = new System.Drawing.Point(16, 164);
-            this.cbDD.Name = "cbDD";
-            this.cbDD.Size = new System.Drawing.Size(278, 17);
-            this.cbDD.TabIndex = 6;
-            this.cbDD.Text = "Đặc điểm chính của pha trưởng thành để nhận dạng";
-            this.cbDD.UseVisualStyleBackColor = true;
-            this.cbDD.CheckedChanged += new System.EventHandler(this.cbItem_CheckedChanged);
-            // 
-            // cbBQ
-            // 
-            this.cbBQ.AutoSize = true;
-            this.cbBQ.Location = new System.Drawing.Point(126, 95);
-            this.cbBQ.Name = "cbBQ";
-            this.cbBQ.Size = new System.Drawing.Size(122, 17);
-            this.cbBQ.TabIndex = 7;
-            this.cbBQ.Text = "Giám định bảo quản";
-            this.cbBQ.UseVisualStyleBackColor = true;
-            this.cbBQ.CheckedChanged += new System.EventHandler(this.cbItem_CheckedChanged);
-            // 
-            // cbLSVN
-            // 
-            this.cbLSVN.AutoSize = true;
-            this.cbLSVN.Location = new System.Drawing.Point(16, 117);
-            this.cbLSVN.Name = "cbLSVN";
-            this.cbLSVN.Size = new System.Drawing.Size(162, 17);
-            this.cbLSVN.TabIndex = 8;
-            this.cbLSVN.Text = "Lịch sử phát hiện ở Việt Nam";
-            this.cbLSVN.UseVisualStyleBackColor = true;
-            this.cbLSVN.CheckedChanged += new System.EventHandler(this.cbItem_CheckedChanged);
-            // 
-            // cbPHVN
-            // 
-            this.cbPHVN.AutoSize = true;
-            this.cbPHVN.Location = new System.Drawing.Point(16, 140);
-            this.cbPHVN.Name = "cbPHVN";
-            this.cbPHVN.Size = new System.Drawing.Size(204, 17);
-            this.cbPHVN.TabIndex = 9;
-            this.cbPHVN.Text = "Tài liệu công bố phát hiện ở Việt Nam";
-            this.cbPHVN.UseVisualStyleBackColor = true;
-            this.cbPHVN.CheckedChanged += new System.EventHandler(this.cbItem_CheckedChanged);
+            this.cb.AutoSize = true;
+            this.cb.Location = new System.Drawing.Point(16, 26);
+            this.cb.Name = "cb";
+            this.cb.Size = new System.Drawing.Size(81, 17);
+            this.cb.TabIndex = 0;
+            this.cb.Text = "Chọn tất cả";
+            this.cb.UseVisualStyleBackColor = true;
+            this.cb.CheckedChanged += new System.EventHandler(this.cb_CheckedChanged);
             // 
             // groupBox2
             // 

@@ -31,7 +31,7 @@ namespace SVGH
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            xemct(idex);
         }
 
         private void radioButton_CheckedChanged(object sender, EventArgs e)
@@ -107,9 +107,10 @@ namespace SVGH
         }
 
         #region
-        private void xemct()
+        private void xemct(int iex)
         {
-
+            frmChiTiet mfrmChiTiet = new frmChiTiet(dtgSVH.Rows[iex].Cells["ID_SVH"].Value.ToString(), 0);
+            mfrmChiTiet.ShowDialog();
         }
 
         private void showdata()
@@ -245,5 +246,10 @@ namespace SVGH
             txtTD.Text = db.Rows[0][4].ToString();
         }
         #endregion
+
+        private void dtgSVH_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            xemct(e.RowIndex);
+        }
     }
 }

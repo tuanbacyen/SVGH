@@ -31,7 +31,7 @@ namespace SVGH
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            xemct(idex);
         }
 
         private void cbPVKC_SelectedIndexChanged(object sender, EventArgs e)
@@ -96,9 +96,10 @@ namespace SVGH
         }
 
         #region
-        private void xemct()
+        private void xemct(int iex)
         {
-
+            frmChiTiet mfrmChiTiet = new frmChiTiet(dtgSHC.Rows[iex].Cells["ID_SHChinh"].Value.ToString(), 1);
+            mfrmChiTiet.ShowDialog();
         }
 
         private void showdata()
@@ -215,8 +216,13 @@ namespace SVGH
             {
                 imgLoad.Image = Properties.Resources.imgdefault;
             }
-
         }
         #endregion
+
+        private void dtgSHC_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            xemct(e.RowIndex);
+        }
+
     }
 }
