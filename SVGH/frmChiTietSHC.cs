@@ -32,8 +32,8 @@ namespace SVGH
         enum myTextContent { tenvn, tenvnk, tenkh, tenkhk, tenen, ho, bo, lop, nganh };
         string[] textContent = { "Tên Việt Nam: ", "Tên Việt Nam khác: ", "Tên khoa học: ", "Tên khoa học khác: ", "Tên tiếng anh: ", "Họ: ", "Bộ: ", "Lớp: ", "Ngành: " };
 
-        int[] old = { 0, 5, 5, 2, 2, 1, 1, 1, 3, 1 };
-        int[] test = { 0, 5, 10, 12, 14, 15, 16, 17, 20 };
+        int[] old = { 0, 6, 5, 2, 2, 2, 2, 2 };
+        int[] oldContent = { 0, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1 };
         #endregion
 
         public frmChiTietSHC(string id)
@@ -94,7 +94,7 @@ namespace SVGH
                 "    " + textContent[(int)myTextContent.tenvn] + db.Rows[0][1].ToString() + Environment.NewLine +
                 "    " + textContent[(int)myTextContent.tenvnk] + "" + Environment.NewLine +
                 "    " + textContent[(int)myTextContent.tenkh] + db.Rows[0][2].ToString() + Environment.NewLine +
-                "    " + textContent[(int)myTextContent.tenkh] + "" + Environment.NewLine +
+                "    " + textContent[(int)myTextContent.tenkhk] + "" + Environment.NewLine +
                 "    " + textContent[(int)myTextContent.tenen] + "" + Environment.NewLine;
 
             vitriPL = textTitle[(int)myTextTitle.vtpl] + Environment.NewLine +
@@ -185,44 +185,33 @@ namespace SVGH
 
             txt.Text = data;
 
-            //int[] newar = new int[10];
-            //bool check = true;
-            //for (int i = 0; i < textTitle.Length; i++)
-            //{
-            //    int start = data.IndexOf(textTitle[i]);
-            //    if (start != -1)
-            //    {
-            //        if (check)
-            //            newar[i] = 0;
-            //        else
-            //            newar[i] = newar[i-1] + old[i];
+            int wrapTitle = 0;
+            for (int i = 0; i < textTitle.Length; i++)
+            {
+                int start = data.IndexOf(textTitle[i]);
+                if (start != -1)
+                {
+                    start -= wrapTitle;
+                    wrapTitle += old[i + 1];
+                    txt.Select(start, textTitle[i].Length);
+                    txt.SelectionColor = Color.Red;
+                    txt.SelectionFont = new Font(txt.Font.Name, 20, FontStyle.Bold);
+                }
+            }
 
-            //        check = false;
-
-            //        MessageBox.Show(newar[i].ToString());
-
-            //        if (start != 0)
-            //            start -= newar[i];
-            //        txt.Select(start, textTitle[i].Length);
-            //        txt.SelectionColor = Color.Red;
-            //        txt.SelectionFont = new Font(txt.Font.Name, 20, FontStyle.Bold);
-            //    }
-            //    else
-            //    {
-            //        old[i + 1] -= old[i];
-            //    }
-            //}
-
-            //for (int i = 0; i < textContent.Length; i++)
-            //{
-            //    int start = data.IndexOf(textContent[i]);
-            //    if (start != -1)
-            //    {
-            //        txt.Select(start, textContent[i].Length);
-            //        txt.SelectionColor = Color.Blue;
-            //        txt.SelectionFont = new Font(txt.Font.Name, 15, FontStyle.Bold);
-            //    }
-            //}
+            int wrapContent = 2;
+            for (int i = 0; i < textContent.Length; i++)
+            {
+                int start = data.IndexOf(textContent[i]);
+                if (start != -1)
+                {
+                    start -= wrapContent;
+                    wrapContent += oldContent[i + 1];
+                    txt.Select(start, textContent[i].Length);
+                    txt.SelectionColor = Color.Blue;
+                    txt.SelectionFont = new Font(txt.Font.Name, 17, FontStyle.Bold);
+                }
+            }
         }
 
         private void getAll()

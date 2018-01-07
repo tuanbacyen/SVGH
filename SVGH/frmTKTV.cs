@@ -27,10 +27,25 @@ namespace SVGH
         {
             this.Close();
         }
+
         private void xemct(int iex)
         {
-            //frmChiTiet mfrmChiTiet = new frmChiTiet(dtgSHC.Rows[iex].Cells["ID_SHChinh"].Value.ToString(), 1);
-            //mfrmChiTiet.ShowDialog();
+            string loai = dtg.Rows[idex].Cells["LOAI"].Value.ToString();
+            if (loai == "0")
+            {
+                frmChiTietSVH mfrmChiTiet = new frmChiTietSVH(dtg.Rows[iex].Cells["ID"].Value.ToString());
+                mfrmChiTiet.ShowDialog();
+            }
+            else if (loai == "1")
+            {
+                frmChiTietSHC mfrmChiTiet = new frmChiTietSHC(dtg.Rows[iex].Cells["ID"].Value.ToString());
+                mfrmChiTiet.ShowDialog();
+            }
+            else if (loai == "2")
+            {
+                frmChiTietBHC mfrmChiTiet = new frmChiTietBHC(dtg.Rows[iex].Cells["ID"].Value.ToString());
+                mfrmChiTiet.ShowDialog();
+            }
         }
 
         private void frmTKTV_Load(object sender, EventArgs e)
@@ -400,12 +415,18 @@ namespace SVGH
 
         private void dtg_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if(dtg.Rows.Count > 0 && e.RowIndex != -1)
+            {
+                xemct(e.RowIndex);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            if (idex != -1)
+            {
+                xemct(idex);
+            }
         }
 
         private void dtg_CellClick(object sender, DataGridViewCellEventArgs e)

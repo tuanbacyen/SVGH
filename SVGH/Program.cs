@@ -16,7 +16,7 @@ namespace SVGH
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmChiTietBHC("1"));
+            Application.Run(new Main());
         }
     }
 }

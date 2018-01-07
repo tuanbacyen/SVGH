@@ -28,7 +28,8 @@ namespace SVGH
 
         private void button1_Click(object sender, EventArgs e)
         {
-            xemct(idex);
+            if (idex != -1)
+                xemct(idex);
         }
 
         private void cbPVKC_SelectedIndexChanged(object sender, EventArgs e)
@@ -67,7 +68,7 @@ namespace SVGH
         #region
         private void xemct(int iex)
         {
-            frmChiTiet mfrmChiTiet = new frmChiTiet(dtgBHC.Rows[iex].Cells["ID_BHChinh"].Value.ToString(), 2);
+            frmChiTietBHC mfrmChiTiet = new frmChiTietBHC(dtgBHC.Rows[iex].Cells["ID_BHChinh"].Value.ToString());
             mfrmChiTiet.ShowDialog();
         }
 
@@ -168,7 +169,8 @@ namespace SVGH
 
         private void dtgBHC_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            xemct(e.RowIndex);
+            if (dtgBHC.Rows.Count > 0 && e.RowIndex != -1)
+                xemct(e.RowIndex);
         }
     }
 }

@@ -27,10 +27,10 @@ namespace SVGH
         string[] textTitle = { "Tên Loài", "Vị trí phân loại", "Phân bố", "Tình trạng phát hiện", "Thời gian phát hiện", "Tác động" };
 
         enum myTextContent { tenvn, tenvnk, tenkh, tenkhk, tenen, ho, bo, lop, nganh };
-        string[] textContent = { "Tên Việt Nam: ", "Tên Việt Nam khác: ", "Tên khoa học: ", "Tên khoa học khác: ","Tên tiếng anh", "Họ: ", "Bộ: ", "Lớp: ", "Ngành: " };
+        string[] textContent = { "Tên Việt Nam: ", "Tên Việt Nam khác: ", "Tên khoa học: ", "Tên khoa học khác: ", "Tên tiếng anh: ", "Họ: ", "Bộ: ", "Lớp: ", "Ngành: " };
 
-        int[] old = { 0, 5, 5, 2, 2, 1, 1, 1, 3, 1 };
-        int[] test = { 0, 5, 10, 12, 14, 15, 16, 17, 20 };
+        int[] old = { 0, 6, 5, 2, 2, 2, 2 };
+        int[] oldContent = {0, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1 };
         #endregion
 
         public frmChiTietSVH(string id)
@@ -66,7 +66,7 @@ namespace SVGH
             }
         }
 
-        
+
 
         private void btnA_Click(object sender, EventArgs e)
         {
@@ -87,25 +87,19 @@ namespace SVGH
                     "    " + textContent[(int)myTextContent.tenvn] + db.Rows[0][3].ToString() + Environment.NewLine +
                     "    " + textContent[(int)myTextContent.tenvnk] + db.Rows[0][4].ToString() + Environment.NewLine +
                     "    " + textContent[(int)myTextContent.tenkh] + db.Rows[0][5].ToString() + Environment.NewLine +
-                    "    " + textContent[(int)myTextContent.tenkh] + db.Rows[0][6].ToString() + Environment.NewLine +
+                    "    " + textContent[(int)myTextContent.tenkhk] + db.Rows[0][6].ToString() + Environment.NewLine +
                     "    " + textContent[(int)myTextContent.tenen] + db.Rows[0][7].ToString() + Environment.NewLine;
 
-            tacdong = textTitle[(int)myTextTitle.tacdong] + Environment.NewLine;
-            if (db.Rows[0][8].ToString() != "")
-            {
-                tacdong += "    " + db.Rows[0][8].ToString() + Environment.NewLine;
-            }
+            vitriPL = textTitle[(int)myTextTitle.vtpl] + Environment.NewLine +
+                "    " + textContent[(int)myTextContent.ho] + db.Rows[0][12].ToString() + Environment.NewLine +
+                "    " + textContent[(int)myTextContent.bo] + db.Rows[0][13].ToString() + Environment.NewLine +
+                "    " + textContent[(int)myTextContent.lop] + db.Rows[0][14].ToString() + Environment.NewLine +
+                "    " + textContent[(int)myTextContent.nganh] + db.Rows[0][15].ToString() + Environment.NewLine;
 
             phanbo = textTitle[(int)myTextTitle.phanbo] + Environment.NewLine;
             if (db.Rows[0][9].ToString() != "")
             {
                 phanbo += "    " + db.Rows[0][9].ToString() + Environment.NewLine;
-            }
-
-            tgph = textTitle[(int)myTextTitle.tgph] + Environment.NewLine;
-            if (db.Rows[0][10].ToString() != "")
-            {
-                tgph += "    " + db.Rows[0][10].ToString() + Environment.NewLine;
             }
 
             ttph = textTitle[(int)myTextTitle.ttph] + Environment.NewLine;
@@ -114,11 +108,18 @@ namespace SVGH
                 ttph += "    " + db.Rows[0][11].ToString() + Environment.NewLine;
             }
 
-            vitriPL = textTitle[(int)myTextTitle.vtpl] + Environment.NewLine +
-                "    " + textContent[(int)myTextContent.ho] + db.Rows[0][12].ToString() + Environment.NewLine +
-                "    " + textContent[(int)myTextContent.bo] + db.Rows[0][13].ToString() + Environment.NewLine +
-                "    " + textContent[(int)myTextContent.lop] + db.Rows[0][14].ToString() + Environment.NewLine +
-                "    " + textContent[(int)myTextContent.nganh] + db.Rows[0][15].ToString() + Environment.NewLine;
+            tgph = textTitle[(int)myTextTitle.tgph] + Environment.NewLine;
+            if (db.Rows[0][10].ToString() != "")
+            {
+                tgph += "    " + db.Rows[0][10].ToString() + Environment.NewLine;
+            }
+
+            tacdong = textTitle[(int)myTextTitle.tacdong] + Environment.NewLine;
+            if (db.Rows[0][8].ToString() != "")
+            {
+                tacdong += "    " + db.Rows[0][8].ToString() + Environment.NewLine;
+            }
+
 
             img.Image = Properties.Resources.imgdefault;
             lblTB.Text = "Chưa có ảnh";
@@ -145,44 +146,33 @@ namespace SVGH
 
             txt.Text = data;
 
-            //int[] newar = new int[10];
-            //bool check = true;
-            //for (int i = 0; i < textTitle.Length; i++)
-            //{
-            //    int start = data.IndexOf(textTitle[i]);
-            //    if (start != -1)
-            //    {
-            //        if (check)
-            //            newar[i] = 0;
-            //        else
-            //            newar[i] = newar[i-1] + old[i];
+            int wrapTitle = 0;
+            for (int i = 0; i < textTitle.Length; i++)
+            {
+                int start = data.IndexOf(textTitle[i]);
+                if (start != -1)
+                {
+                    start -= wrapTitle;
+                    wrapTitle += old[i + 1];
+                    txt.Select(start, textTitle[i].Length);
+                    txt.SelectionColor = Color.Red;
+                    txt.SelectionFont = new Font(txt.Font.Name, 20, FontStyle.Bold);
+                }
+            }
 
-            //        check = false;
-
-            //        MessageBox.Show(newar[i].ToString());
-
-            //        if (start != 0)
-            //            start -= newar[i];
-            //        txt.Select(start, textTitle[i].Length);
-            //        txt.SelectionColor = Color.Red;
-            //        txt.SelectionFont = new Font(txt.Font.Name, 20, FontStyle.Bold);
-            //    }
-            //    else
-            //    {
-            //        old[i + 1] -= old[i];
-            //    }
-            //}
-
-            //for (int i = 0; i < textContent.Length; i++)
-            //{
-            //    int start = data.IndexOf(textContent[i]);
-            //    if (start != -1)
-            //    {
-            //        txt.Select(start, textContent[i].Length);
-            //        txt.SelectionColor = Color.Blue;
-            //        txt.SelectionFont = new Font(txt.Font.Name, 15, FontStyle.Bold);
-            //    }
-            //}
+            int wrapContent = 2;
+            for (int i = 0; i < textContent.Length; i++)
+            {
+                int start = data.IndexOf(textContent[i]);
+                if (start != -1)
+                {
+                    start -= wrapContent;
+                    wrapContent += oldContent[i + 1];
+                    txt.Select(start, textContent[i].Length);
+                    txt.SelectionColor = Color.Blue;
+                    txt.SelectionFont = new Font(txt.Font.Name, 17, FontStyle.Bold);
+                }
+            }
         }
 
         private void cbItem_CheckedChanged(object sender, EventArgs e)

@@ -37,7 +37,8 @@ namespace SVGH
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            database_helper.openCon();
+            frmTKTV frmTKTVmn = new frmTKTV();
+            frmTKTVmn.ShowDialog();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
