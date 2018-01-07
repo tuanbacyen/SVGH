@@ -329,19 +329,7 @@ namespace SVGH
         {
             cbTL.Checked = cbPL.Checked = cbPB.Checked = cbTH.Checked = cbXH.Checked = cbDD.Checked = cbBQ.Checked = cbLSVN.Checked = cbPHVN.Checked = cb.Checked;
         }
-
-        private void checkGetAll()
-        {
-            if (!cb.Checked)
-            {
-                if (!cbTL.Checked || !cbPL.Checked || !cbBQ.Checked || !cbDD.Checked || !cbLSVN.Checked || !cbPB.Checked || !cbPHVN.Checked || !cbTH.Checked || !cbXH.Checked)
-                {
-                    cb.Text = "Chọn tất cả";
-                    cb.Checked = false;
-                }
-            }
-        }
-
+        
         private void cb_CheckedChanged(object sender, EventArgs e)
         {
             if (cb.Checked)

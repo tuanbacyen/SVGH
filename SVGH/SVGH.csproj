@@ -73,6 +73,24 @@
     <Compile Include="frmChiTiet.Designer.cs">
       <DependentUpon>frmChiTiet.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmChiTietBHC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChiTietBHC.Designer.cs">
+      <DependentUpon>frmChiTietBHC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChiTietSHC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChiTietSHC.Designer.cs">
+      <DependentUpon>frmChiTietSHC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChiTietSVH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChiTietSVH.Designer.cs">
+      <DependentUpon>frmChiTietSVH.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSHC.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +135,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmChiTiet.resx">
       <DependentUpon>frmChiTiet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChiTietBHC.resx">
+      <DependentUpon>frmChiTietBHC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChiTietSHC.resx">
+      <DependentUpon>frmChiTietSHC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChiTietSVH.resx">
+      <DependentUpon>frmChiTietSVH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSHC.resx">
       <DependentUpon>frmSHC.cs</DependentUpon>
