@@ -56,7 +56,8 @@ namespace SVGH
 
         private void tìmKiếmTheoVùngPhânBốToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            frmTKTV frmTKSVHmn = new frmTKTV();
+            frmTKSVHmn.ShowDialog();
         }
     }
 }

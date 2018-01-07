@@ -30,150 +30,125 @@ namespace SVGH
 
         private void xemct(int iex)
         {
-            string loai = dtg.Rows[idex].Cells["LOAI"].Value.ToString();
-            if (loai == "0")
+            if(idex != -1)
             {
-                frmChiTietSVH mfrmChiTiet = new frmChiTietSVH(dtg.Rows[iex].Cells["ID"].Value.ToString());
-                mfrmChiTiet.ShowDialog();
-            }
-            else if (loai == "1")
-            {
-                frmChiTietSHC mfrmChiTiet = new frmChiTietSHC(dtg.Rows[iex].Cells["ID"].Value.ToString());
-                mfrmChiTiet.ShowDialog();
-            }
-            else if (loai == "2")
-            {
-                frmChiTietBHC mfrmChiTiet = new frmChiTietBHC(dtg.Rows[iex].Cells["ID"].Value.ToString());
+                frmChiTietSVH mfrmChiTiet = new frmChiTietSVH(dtg.Rows[iex].Cells["ID_SVH"].Value.ToString());
                 mfrmChiTiet.ShowDialog();
             }
         }
 
         private void frmTKTV_Load(object sender, EventArgs e)
         {
-            loaitimkiem();
             loadData();
+            loadPhamVi();
+            loadNhom();
+        }
+
+        private void loadPhamVi()
+        {
+            string sql = "SELECT ID_Cay,TenCay FROM tblCay ;";
+            DataTable db = database_helper.GetDataTable(sql);
+            DataRow dr = db.NewRow();
+            dr[0] = "all";
+            dr[1] = "Chọn tất cả";
+            db.Rows.InsertAt(dr, 0);
+            cbPVKC.DataSource = db;
+            cbPVKC.ValueMember = "ID_Cay";
+            cbPVKC.DisplayMember = "TenCay";
+        }
+
+        private void loadNhom()
+        {
+            string sql = "SELECT ID_NhomSVH,TenNhom FROM tblNhomSVH";
+            DataTable db = database_helper.GetDataTable(sql);
+            DataRow dr = db.NewRow();
+            dr[0] = "all";
+            dr[1] = "Chọn tất cả";
+            db.Rows.InsertAt(dr, 0);
+            cbNhom.DataSource = db;
+            cbNhom.ValueMember = "ID_NhomSVH";
+            cbNhom.DisplayMember = "TenNhom";
         }
 
         private void loadData()
         {
+            string idnhom = "";
+            string idCay = "";
+
+            clearText();
+
+            if (cbNhom.Items.Count > 0)
+            {
+                idnhom = cbNhom.SelectedValue.ToString();
+            }
+            if (cbPVKC.Items.Count > 0)
+            {
+                idCay = cbPVKC.SelectedValue.ToString();
+            }
+
+            string sql = "SELECT TenVN,TenKH,ID_SVH FROM tblSVH ";
+            bool check = false;
+
+            if (idnhom != "all" && idnhom != "")
+            {
+                sql = sql + " where ID_NhomSVH = '" + idnhom + "' ";
+                check = true;
+            }
+
+            if (idCay != "all" && idCay != "" && check == false)
+            {
+                sql = sql + " where ID_Cay = '" + idCay + "' ";
+                check = true;
+            }
+            else if (idCay != "all" && idCay != "" && check == true)
+            {
+                sql = sql + " and ID_Cay = '" + idCay + "' ";
+            }
+
             if (txtSearch.Text.Trim() == "")
             {
-                if (cbLTK.SelectedIndex == 0)
-                {
-                    string sqlSVH = "SELECT TenVN,TenKH,ID_SVH as ID,0 as LOAI FROM tblSVH ";
-                    string sqlSHC = "SELECT TenVN,TenKH,ID_SHChinh as ID,1 as LOAI FROM tblSHChinh ";
-                    string sqlBHC = "SELECT TenVN,'' as TenKH,ID_BHChinh as ID,2 as LOAI FROM tblBHChinh ";
-
-                    DataTable dbSVH = database_helper.GetDataTable(sqlSVH);
-                    DataTable dbSHC = database_helper.GetDataTable(sqlSHC);
-                    DataTable dbBHC = database_helper.GetDataTable(sqlBHC);
-
-                    DataTable dbAll = new DataTable();
-                    dbAll.Merge(dbSVH);
-                    dbAll.Merge(dbSHC);
-                    dbAll.Merge(dbBHC);
-
-                    dtg.DataSource = dbAll;
-
-                }
-                else if (cbLTK.SelectedIndex == 1)
-                {
-                    string sqlSVH = "SELECT TenVN,TenKH,ID_SVH as ID,0 as LOAI FROM tblSVH ";
-                    DataTable dbSVH = database_helper.GetDataTable(sqlSVH);
-                    dtg.DataSource = dbSVH;
-                }
-                else if (cbLTK.SelectedIndex == 2)
-                {
-                    string sqlSHC = "SELECT TenVN,TenKH,ID_SHChinh as ID,1 as LOAI FROM tblSHChinh ";
-                    DataTable dbSHC = database_helper.GetDataTable(sqlSHC);
-                    dtg.DataSource = dbSHC;
-                }
-                else if (cbLTK.SelectedIndex == 3)
-                {
-                    string sqlBHC = "SELECT TenVN,'' as TenKH,ID_BHChinh as ID,2 as LOAI FROM tblBHChinh ";
-                    DataTable dbBHC = database_helper.GetDataTable(sqlBHC);
-                    dtg.DataSource = dbBHC;
-                }
+                DataTable dbSVH = database_helper.GetDataTable(sql);
+                dtg.DataSource = dbSVH;
             }
             else
             {
+                if (check == true)
+                {
+                    sql += " and ";
+                }
+                else
+                {
+                    sql += " where ";
+                }
+
                 string[] textSearch = txtSearch.Text.Trim().Split(',');
-                string keySearchSVH = " WHERE ";
-                string keySearchSHC = " WHERE ";
-                string keySearchBHC = " WHERE ";
+                string keySearchSVH = "";
+                string keySearchName = "";
 
                 for (int i = 0; i < textSearch.Length; i++)
                 {
                     if (i == 0)
                     {
                         keySearchSVH += "DIA_DIEM_PH like '%" + textSearch[i] + "%' ";
-                        keySearchSHC += "Phan_Bo like '%" + textSearch[i] + "%' ";
+                        keySearchName += "OR TenVN like '%" + textSearch[i] + "%' or TenKH like '%" + textSearch[i] + "%'";
                     }
                     else
                     {
                         keySearchSVH += " OR DIA_DIEM_PH like '%" + textSearch[i] + "%' ";
-                        keySearchSHC += " OR Phan_Bo like '%" + textSearch[i] + "%' ";
+                        keySearchName += "OR TenVN like '%" + textSearch[i] + "%' or TenKH like '%" + textSearch[i] + "%'";
                     }
                 }
 
-                if (cbLTK.SelectedIndex == 0)
-                {
-                    string sqlSVH = "SELECT TenVN,TenKH,ID_SVH as ID,0 as LOAI FROM tblSVH " + keySearchSVH;
-                    string sqlSHC = "SELECT TenVN,TenKH,ID_SHChinh as ID,1 as LOAI FROM tblSHChinh ";
-                    string sqlBHC = "SELECT TenVN,'' as TenKH,ID_BHChinh as ID,2 as LOAI FROM tblBHChinh ";
-
-                    DataTable dbSVH = database_helper.GetDataTable(sqlSVH);
-                    DataTable dbSHC = database_helper.GetDataTable(sqlSHC);
-                    DataTable dbBHC = database_helper.GetDataTable(sqlBHC);
-
-                    DataTable dbAll = new DataTable();
-                    dbAll.Merge(dbSVH);
-                    dbAll.Merge(dbSHC);
-                    dbAll.Merge(dbBHC);
-
-                    dtg.DataSource = dbAll;
-
-                }
-                else if (cbLTK.SelectedIndex == 1)
-                {
-                    string sqlSVH = "SELECT TenVN,TenKH,ID_SVH as ID,0 as LOAI FROM tblSVH " + keySearchSVH;
-                    DataTable dbSVH = database_helper.GetDataTable(sqlSVH);
-                    dtg.DataSource = dbSVH;
-                }
-                else if (cbLTK.SelectedIndex == 2)
-                {
-                    string sqlSHC = "SELECT TenVN,TenKH,ID_SHChinh as ID,1 as LOAI FROM tblSHChinh " + keySearchSHC;
-                    DataTable dbSHC = database_helper.GetDataTable(sqlSHC);
-                    dtg.DataSource = dbSHC;
-                }
-                else if (cbLTK.SelectedIndex == 3)
-                {
-                    string sqlBHC = "SELECT TenVN,'' as TenKH,ID_BHChinh as ID,2 as LOAI FROM tblBHChinh ";
-                    DataTable dbBHC = database_helper.GetDataTable(sqlBHC);
-                    dtg.DataSource = dbBHC;
-                }
+                sql += keySearchSVH + " " + keySearchName;
             }
+
+            dtg.DataSource = database_helper.GetDataTable(sql);
 
             if (dtg.Rows.Count > 0)
             {
                 dtg.Rows[0].Selected = true;
                 idex = 0;
-                getImageToShow(dtg.Rows[0].Cells["ID"].Value.ToString(), dtg.Rows[0].Cells["LOAI"].Value.ToString());
             }
-            else
-            {
-                imgLoad.Image = Properties.Resources.imgdefault;
-            }
-        }
-
-        private void loaitimkiem()
-        {
-            cbLTK.Items.Clear();
-            cbLTK.Items.Insert(0, "Chọn tất cả");
-            cbLTK.Items.Insert(1, "Sinh vật hại");
-            cbLTK.Items.Insert(2, "Sâu hại chính");
-            cbLTK.Items.Insert(3, "Bệnh hại chính");
-            cbLTK.SelectedIndex = 0;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -181,7 +156,6 @@ namespace SVGH
             loadData();
         }
 
-        #region check box
         private void clearText()
         {
             string textNew = txtSearch.Text.Trim();
@@ -214,205 +188,6 @@ namespace SVGH
             txtSearch.Text = textNew.Trim();
         }
 
-        private void cbtrungtam_CheckedChanged(object sender, EventArgs e)
-        {
-            string textS = txtSearch.Text.Trim() + ",";
-            // trung tam
-            if (cbtrungtam.Checked)
-            {
-                if (textS.IndexOf(textCheck[(int)myCheck.trungtam]) == -1)
-                {
-                    textS += textCheck[(int)myCheck.trungtam] + ",";
-                }
-            }
-            else
-            {
-                if (textS.IndexOf(textCheck[(int)myCheck.trungtam]) != -1)
-                {
-                    textS = textS.Replace(textCheck[(int)myCheck.trungtam], "");
-                }
-            }
-            txtSearch.Text = textS;
-            clearText();
-        }
-
-        private void cbtaynguyen_CheckedChanged(object sender, EventArgs e)
-        {
-            string textS = txtSearch.Text.Trim() + ",";
-            // tay nguyen
-            if (cbtaynguyen.Checked)
-            {
-                if (textS.IndexOf(textCheck[(int)myCheck.taynguyen]) == -1)
-                {
-                    textS += textCheck[(int)myCheck.taynguyen] + ",";
-                }
-            }
-            else
-            {
-                if (textS.IndexOf(textCheck[(int)myCheck.taynguyen]) != -1)
-                {
-                    textS = textS.Replace(textCheck[(int)myCheck.taynguyen], "");
-                }
-            }
-            txtSearch.Text = textS;
-            clearText();
-        }
-
-        private void cbtaynambo_CheckedChanged(object sender, EventArgs e)
-        {
-            string textS = txtSearch.Text.Trim() + ",";
-            // tay nam bo
-            if (cbtaynambo.Checked)
-            {
-                if (textS.IndexOf(textCheck[(int)myCheck.taynambo]) == -1)
-                {
-                    textS += textCheck[(int)myCheck.taynambo] + ",";
-                }
-            }
-            else
-            {
-                if (textS.IndexOf(textCheck[(int)myCheck.taynambo]) != -1)
-                {
-                    textS = textS.Replace(textCheck[(int)myCheck.taynambo], "");
-                }
-            }
-            txtSearch.Text = textS;
-            clearText();
-        }
-
-        private void cbdbsonghong_CheckedChanged(object sender, EventArgs e)
-        {
-            string textS = txtSearch.Text.Trim() + ",";
-            // dong bang song hong
-            if (cbdbsonghong.Checked)
-            {
-                if (textS.IndexOf(textCheck[(int)myCheck.dongbangsh]) == -1)
-                {
-                    textS += textCheck[(int)myCheck.dongbangsh] + ",";
-                }
-            }
-            else
-            {
-                if (textS.IndexOf(textCheck[(int)myCheck.dongbangsh]) != -1)
-                {
-                    textS = textS.Replace(textCheck[(int)myCheck.dongbangsh], "");
-                }
-            }
-            txtSearch.Text = textS;
-            clearText();
-        }
-
-        private void cbdongnambo_CheckedChanged(object sender, EventArgs e)
-        {
-            string textS = txtSearch.Text.Trim() + ",";
-            // dong nam bo
-            if (cbdongnambo.Checked)
-            {
-                if (textS.IndexOf(textCheck[(int)myCheck.dongnambo]) == -1)
-                {
-                    textS += textCheck[(int)myCheck.dongnambo] + ",";
-                }
-            }
-            else
-            {
-                if (textS.IndexOf(textCheck[(int)myCheck.dongnambo]) != -1)
-                {
-                    textS = textS.Replace(textCheck[(int)myCheck.dongnambo], "");
-                }
-            }
-            txtSearch.Text = textS;
-            clearText();
-        }
-
-        private void cbtrungdumnpb_CheckedChanged(object sender, EventArgs e)
-        {
-            string textS = txtSearch.Text.Trim() + ",";
-            // trung du mien nui phia bac
-            if (cbtrungdumnpb.Checked)
-            {
-                if (textS.IndexOf(textCheck[(int)myCheck.trungdumnpb]) == -1)
-                {
-                    textS += textCheck[(int)myCheck.trungdumnpb] + ",";
-                }
-            }
-            else
-            {
-                if (textS.IndexOf(textCheck[(int)myCheck.trungdumnpb]) != -1)
-                {
-                    textS = textS.Replace(textCheck[(int)myCheck.trungdumnpb], "");
-                }
-            }
-            txtSearch.Text = textS;
-            clearText();
-        }
-
-        private void cbduyenhaintb_CheckedChanged(object sender, EventArgs e)
-        {
-            string textS = txtSearch.Text.Trim() + ",";
-            // duyen hai nam trung bo
-            if (cbduyenhaintb.Checked)
-            {
-                if (textS.IndexOf(textCheck[(int)myCheck.duyenhaintb]) == -1)
-                {
-                    textS += textCheck[(int)myCheck.duyenhaintb] + ",";
-                }
-            }
-            else
-            {
-                if (textS.IndexOf(textCheck[(int)myCheck.duyenhaintb]) != -1)
-                {
-                    textS = textS.Replace(textCheck[(int)myCheck.duyenhaintb], "");
-                }
-            }
-            txtSearch.Text = textS;
-            clearText();
-        }
-
-        private void cbduyenhaibtb_CheckedChanged(object sender, EventArgs e)
-        {
-            string textS = txtSearch.Text.Trim() + ",";
-            // duyen hai ba trung bo
-            if (cbduyenhaibtb.Checked)
-            {
-                if (textS.IndexOf(textCheck[(int)myCheck.duyenhaibtb]) == -1)
-                {
-                    textS += textCheck[(int)myCheck.duyenhaibtb] + ",";
-                }
-            }
-            else
-            {
-                if (textS.IndexOf(textCheck[(int)myCheck.duyenhaibtb]) != -1)
-                {
-                    textS = textS.Replace(textCheck[(int)myCheck.duyenhaibtb], "");
-                }
-            }
-            txtSearch.Text = textS;
-            clearText();
-        }
-
-        private void cbdbsongcuulong_CheckedChanged(object sender, EventArgs e)
-        {
-            string textS = txtSearch.Text.Trim() + ",";
-            // dong bang song cuu long
-            if (cbdbsongcuulong.Checked)
-            {
-                if (textS.IndexOf(textCheck[(int)myCheck.dongbangscl]) == -1)
-                {
-                    textS += textCheck[(int)myCheck.dongbangscl] + ",";
-                }
-            }
-            else
-            {
-                if (textS.IndexOf(textCheck[(int)myCheck.dongbangscl]) != -1)
-                {
-                    textS = textS.Replace(textCheck[(int)myCheck.dongbangscl], "");
-                }
-            }
-            txtSearch.Text = textS;
-            clearText();
-        }
-        #endregion
-
         private void dtg_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if(dtg.Rows.Count > 0 && e.RowIndex != -1)
@@ -433,80 +208,29 @@ namespace SVGH
         {
             if (dtg.Rows.Count > 0 && e.RowIndex != -1)
             {
-                getImageToShow(dtg.Rows[e.RowIndex].Cells["ID"].Value.ToString(), dtg.Rows[e.RowIndex].Cells["LOAI"].Value.ToString());
                 idex = e.RowIndex;
             }
-        }
-
-        private void getImageToShow(string id, string loai)
-        {
-            if (loai == "0")
-            {
-                imgLoad.Image = Properties.Resources.imgdefault;
-            }
-            else if (loai == "1")
-            {
-                string sql = "SELECT img_Data from tblAnhSHC where ID_SHChinh = " + id + " and isShow = 1";
-                DataTable db = database_helper.GetDataTable(sql);
-                if (db.Rows.Count > 0)
-                {
-                    try
-                    {
-                        DataRow dr = db.NewRow();
-                        DataRowView drv = db.DefaultView[0];
-
-                        Byte[] i = (byte[])drv[0];
-                        MemoryStream stmBLOBData = new MemoryStream(i);
-                        imgLoad.Image = Image.FromStream(stmBLOBData);
-                    }
-                    catch (Exception ex)
-                    {
-                        imgLoad.Image = Properties.Resources.imgdefault;
-                        MessageBox.Show(ex.ToString());
-                    }
-                }
-                else
-                {
-                    imgLoad.Image = Properties.Resources.imgdefault;
-                }
-            }
-            else if (loai == "2")
-            {
-                string sql = "SELECT img_Data from tblAnhBHC where ID_BHChinh = " + id + " and isShow = 1";
-                DataTable db = database_helper.GetDataTable(sql);
-                if (db.Rows.Count > 0)
-                {
-                    try
-                    {
-                        DataRow dr = db.NewRow();
-                        DataRowView drv = db.DefaultView[0];
-
-                        Byte[] i = (byte[])drv[0];
-                        MemoryStream stmBLOBData = new MemoryStream(i);
-                        imgLoad.Image = Image.FromStream(stmBLOBData);
-                    }
-                    catch (Exception ex)
-                    {
-                        imgLoad.Image = Properties.Resources.imgdefault;
-                        MessageBox.Show(ex.ToString());
-                    }
-                }
-                else
-                {
-                    imgLoad.Image = Properties.Resources.imgdefault;
-                }
-            }
-
-        }
-
-        private void dtg_Sorted(object sender, EventArgs e)
-        {
-            getImageToShow(dtg.Rows[idex].Cells["ID"].Value.ToString(), dtg.Rows[idex].Cells["LOAI"].Value.ToString());
         }
 
         private void cbLTK_SelectedIndexChanged(object sender, EventArgs e)
         {
             loadData();
+        }
+
+        private void cbPVKC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbPVKC.Items.Count > 0)
+            {
+                loadData();
+            }
+        }
+
+        private void cbNhom_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbNhom.Items.Count > 0)
+            {
+                loadData();
+            }
         }
     }
 }
