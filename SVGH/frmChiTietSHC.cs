@@ -67,6 +67,10 @@ namespace SVGH
 
         private void button1_Click(object sender, EventArgs e)
         {
+            printPreviewDialog1.Size = new System.Drawing.Size((int)Screen.PrimaryScreen.Bounds.Width / 3 * 2,
+            Screen.PrimaryScreen.Bounds.Height - 100);
+            printPreviewDialog1.PrintPreviewControl.Zoom = 1.5;
+
             if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
                 printDocument1.Print();
         }

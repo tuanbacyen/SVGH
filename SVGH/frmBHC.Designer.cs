@@ -139,6 +139,7 @@
             this.dtgBHC.Margin = new System.Windows.Forms.Padding(2);
             this.dtgBHC.Name = "dtgBHC";
             this.dtgBHC.ReadOnly = true;
+            this.dtgBHC.RowHeadersVisible = false;
             this.dtgBHC.RowTemplate.Height = 24;
             this.dtgBHC.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgBHC.Size = new System.Drawing.Size(416, 336);

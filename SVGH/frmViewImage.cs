@@ -21,14 +21,15 @@ namespace SVGH
         public frmViewImage(string id, int loai)
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
             this.id = id;
             this.loai = loai;
         }
 
         private void myShowImg()
         {
-            int withI = 100;
-            int heightI = 100;
+            int withI = 80;
+            int heightI = 80;
             int x = 0;
             int y = 10;
             int maxheight = -1;
@@ -45,7 +46,7 @@ namespace SVGH
                 x += pic.Width + 10;
                 maxheight = Math.Max(pic.Height, maxheight);
 
-                if (x > this.panel.Width - 110)
+                if (x > this.panel.Width - 90)
                 {
                     x = 20;
                     y += maxheight + 10;

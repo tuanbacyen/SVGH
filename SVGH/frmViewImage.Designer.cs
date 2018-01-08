@@ -31,10 +31,10 @@
             this.imgBigShow = new System.Windows.Forms.PictureBox();
             this.panel = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblDec = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblDec = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgBigShow)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -46,76 +46,76 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.imgBigShow.Location = new System.Drawing.Point(5, 3);
             this.imgBigShow.Name = "imgBigShow";
-            this.imgBigShow.Size = new System.Drawing.Size(721, 275);
+            this.imgBigShow.Size = new System.Drawing.Size(1070, 191);
             this.imgBigShow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgBigShow.TabIndex = 0;
             this.imgBigShow.TabStop = false;
             // 
             // panel
             // 
-            this.panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel.Location = new System.Drawing.Point(5, 284);
+            this.panel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel.Location = new System.Drawing.Point(5, 200);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(1069, 220);
+            this.panel.Size = new System.Drawing.Size(1070, 180);
             this.panel.TabIndex = 1;
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.lblDec);
             this.groupBox1.Controls.Add(this.lblName);
-            this.groupBox1.Location = new System.Drawing.Point(732, -1);
+            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(5, 385);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(342, 279);
+            this.groupBox1.Size = new System.Drawing.Size(1070, 68);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin";
             // 
-            // lblName
+            // label2
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(62, 33);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(35, 13);
-            this.lblName.TabIndex = 0;
-            this.lblName.Text = "label1";
-            // 
-            // lblDec
-            // 
-            this.lblDec.AutoSize = true;
-            this.lblDec.Location = new System.Drawing.Point(62, 95);
-            this.lblDec.Name = "lblDec";
-            this.lblDec.Size = new System.Drawing.Size(35, 13);
-            this.lblDec.TabIndex = 1;
-            this.lblDec.Text = "label2";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(417, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 19);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Miêu tả :";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 33);
+            this.label1.Location = new System.Drawing.Point(8, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.Size = new System.Drawing.Size(39, 19);
             this.label1.TabIndex = 2;
             this.label1.Text = "Tên :";
             // 
-            // label2
+            // lblDec
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 95);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Miêu tả :";
+            this.lblDec.AutoSize = true;
+            this.lblDec.Location = new System.Drawing.Point(504, 26);
+            this.lblDec.Name = "lblDec";
+            this.lblDec.Size = new System.Drawing.Size(45, 19);
+            this.lblDec.TabIndex = 1;
+            this.lblDec.Text = "label2";
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(62, 26);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(45, 19);
+            this.lblName.TabIndex = 0;
+            this.lblName.Text = "label1";
             // 
             // frmViewImage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1086, 505);
+            this.ClientSize = new System.Drawing.Size(1078, 455);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.imgBigShow);

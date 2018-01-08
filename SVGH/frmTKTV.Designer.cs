@@ -171,6 +171,7 @@
             this.dtg.Margin = new System.Windows.Forms.Padding(2);
             this.dtg.Name = "dtg";
             this.dtg.ReadOnly = true;
+            this.dtg.RowHeadersVisible = false;
             this.dtg.RowTemplate.Height = 24;
             this.dtg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtg.Size = new System.Drawing.Size(799, 216);

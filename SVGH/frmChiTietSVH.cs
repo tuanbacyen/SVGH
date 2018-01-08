@@ -21,16 +21,17 @@ namespace SVGH
         string ttph = "";
         string tgph = "";
         string tacdong = "";
+        string tenNhom = "";
 
         string id = "";
-        enum myTextTitle { tenloai, vtpl, phanbo, ttph, tgph, tacdong };
-        string[] textTitle = { "Tên Loài", "Vị trí phân loại", "Phân bố", "Tình trạng phát hiện", "Thời gian phát hiện", "Tác động" };
+        enum myTextTitle { tenloai, vtpl, phanbo, ttph, tgph, bophanbihai, qhddvsh, nsh };
+        string[] textTitle = { "Tên Loài", "Vị trí phân loại", "Phân bố", "Tình trạng phát hiện", "Thời gian phát hiện", "Bộ phận bị hại", "Quan hệ dinh dưỡng với sâu hại", "Nhóm sâu hại" };
 
-        enum myTextContent { tenvn, tenvnk, tenkh, tenkhk, tenen, ho, bo, lop, nganh };
-        string[] textContent = { "Tên Việt Nam: ", "Tên Việt Nam khác: ", "Tên khoa học: ", "Tên khoa học khác: ", "Tên tiếng anh: ", "Họ: ", "Bộ: ", "Lớp: ", "Ngành: " };
+        enum myTextContent { tenvn, tenvnk, tenkh, tenkhk, tenen };
+        string[] textContent = { "Tên Việt Nam: ", "Tên Việt Nam khác: ", "Tên khoa học: ", "Tên khoa học khác: ", "Tên tiếng anh: " };
 
-        int[] old = { 0, 6, 5, 2, 2, 2, 2 };
-        int[] oldContent = {0, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1 };
+        int[] old = { 0, 6, 5, 2, 2, 2, 2, 2, 2, 2 };
+        int[] oldContent = { 0, 1, 1, 1, 1, 1, 2 };
         #endregion
 
         public frmChiTietSVH(string id)
@@ -46,6 +47,10 @@ namespace SVGH
 
         private void button1_Click(object sender, EventArgs e)
         {
+            printPreviewDialog1.Size = new System.Drawing.Size((int)Screen.PrimaryScreen.Bounds.Width / 3 * 2,
+            Screen.PrimaryScreen.Bounds.Height - 100);
+            printPreviewDialog1.PrintPreviewControl.Zoom = 1.5;
+
             if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
                 printDocument1.Print();
         }
@@ -83,41 +88,49 @@ namespace SVGH
 
         private void getData()
         {
+            tenNhom = db.Rows[0]["Nhom"].ToString() + Environment.NewLine;
+
             ten = textTitle[(int)myTextTitle.tenloai] + Environment.NewLine +
-                    "    " + textContent[(int)myTextContent.tenvn] + db.Rows[0][3].ToString() + Environment.NewLine +
-                    "    " + textContent[(int)myTextContent.tenvnk] + db.Rows[0][4].ToString() + Environment.NewLine +
-                    "    " + textContent[(int)myTextContent.tenkh] + db.Rows[0][5].ToString() + Environment.NewLine +
-                    "    " + textContent[(int)myTextContent.tenkhk] + db.Rows[0][6].ToString() + Environment.NewLine +
-                    "    " + textContent[(int)myTextContent.tenen] + db.Rows[0][7].ToString() + Environment.NewLine;
+                    "    " + textContent[(int)myTextContent.tenvn] + db.Rows[0]["TenVN"].ToString() + Environment.NewLine +
+                    "    " + textContent[(int)myTextContent.tenvnk] + db.Rows[0]["TenVN_Khac"].ToString() + Environment.NewLine +
+                    "    " + textContent[(int)myTextContent.tenkh] + db.Rows[0]["TenKH"].ToString() + Environment.NewLine +
+                    "    " + textContent[(int)myTextContent.tenkhk] + db.Rows[0]["TenKH_Khac"].ToString() + Environment.NewLine +
+                    "    " + textContent[(int)myTextContent.tenen] + db.Rows[0]["TenEN"].ToString() + Environment.NewLine;
 
             vitriPL = textTitle[(int)myTextTitle.vtpl] + Environment.NewLine +
-                "    " + textContent[(int)myTextContent.ho] + db.Rows[0][12].ToString() + Environment.NewLine +
-                "    " + textContent[(int)myTextContent.bo] + db.Rows[0][13].ToString() + Environment.NewLine +
-                "    " + textContent[(int)myTextContent.lop] + db.Rows[0][14].ToString() + Environment.NewLine +
-                "    " + textContent[(int)myTextContent.nganh] + db.Rows[0][15].ToString() + Environment.NewLine;
+                "    " + db.Rows[0]["Ho"].ToString() + Environment.NewLine +
+                "    " + db.Rows[0]["Bo"].ToString() + Environment.NewLine +
+                "    " + db.Rows[0]["Lop"].ToString() + Environment.NewLine +
+                "    " + db.Rows[0]["Nganh"].ToString() + Environment.NewLine;
 
             phanbo = textTitle[(int)myTextTitle.phanbo] + Environment.NewLine;
-            if (db.Rows[0][9].ToString() != "")
+            if (db.Rows[0]["Dia_Diem_PH"].ToString() != "")
             {
-                phanbo += "    " + db.Rows[0][9].ToString() + Environment.NewLine;
+                phanbo += "    " + db.Rows[0]["Dia_Diem_PH"].ToString() + Environment.NewLine;
             }
 
             ttph = textTitle[(int)myTextTitle.ttph] + Environment.NewLine;
-            if (db.Rows[0][11].ToString() != "")
+            if (db.Rows[0]["Tinh_Trang_PH"].ToString() != "")
             {
-                ttph += "    " + db.Rows[0][11].ToString() + Environment.NewLine;
+                ttph += "    " + db.Rows[0]["Tinh_Trang_PH"].ToString() + Environment.NewLine;
             }
 
             tgph = textTitle[(int)myTextTitle.tgph] + Environment.NewLine;
-            if (db.Rows[0][10].ToString() != "")
+            if (db.Rows[0]["Thoi_Gian_PH"].ToString() != "")
             {
-                tgph += "    " + db.Rows[0][10].ToString() + Environment.NewLine;
+                tgph += "    " + db.Rows[0]["Thoi_Gian_PH"].ToString() + Environment.NewLine;
             }
 
-            tacdong = textTitle[(int)myTextTitle.tacdong] + Environment.NewLine;
-            if (db.Rows[0][8].ToString() != "")
+            if (db.Rows[0]["ID_NhomSVH"].ToString() == "NHOM01" || db.Rows[0]["ID_NhomSVH"].ToString() == "NHOM04")
+                tacdong = textTitle[(int)myTextTitle.bophanbihai] + Environment.NewLine;
+            else if (db.Rows[0]["ID_NhomSVH"].ToString() == "NHOM03")
+                tacdong = textTitle[(int)myTextTitle.qhddvsh] + Environment.NewLine;
+            else if (db.Rows[0]["ID_NhomSVH"].ToString() == "NHOM02" || db.Rows[0]["ID_NhomSVH"].ToString() == "NHOM05")
+                tacdong = textTitle[(int)myTextTitle.nsh] + Environment.NewLine;
+
+            if (db.Rows[0]["Tac_Dong"].ToString() != "")
             {
-                tacdong += "    " + db.Rows[0][8].ToString() + Environment.NewLine;
+                tacdong += "    " + db.Rows[0]["Tac_Dong"].ToString() + Environment.NewLine;
             }
 
 
@@ -131,6 +144,7 @@ namespace SVGH
         private void show()
         {
             string data = "";
+            data += tenNhom;
             if (cbTL.Checked)
                 data += ten;
             if (cbPL.Checked)
@@ -146,7 +160,7 @@ namespace SVGH
 
             txt.Text = data;
 
-            int wrapTitle = 0;
+            int wrapTitle = 1;
             for (int i = 0; i < textTitle.Length; i++)
             {
                 int start = data.IndexOf(textTitle[i]);
@@ -160,7 +174,7 @@ namespace SVGH
                 }
             }
 
-            int wrapContent = 2;
+            int wrapContent = 3;
             for (int i = 0; i < textContent.Length; i++)
             {
                 int start = data.IndexOf(textContent[i]);

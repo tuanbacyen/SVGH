@@ -17,6 +17,7 @@ namespace SVGH
         public frmTkMainMenu()
         {
             InitializeComponent();
+            this.TopMost = true;
         }
 
         private void btnExitProgram_Click(object sender, EventArgs e)
@@ -32,24 +33,28 @@ namespace SVGH
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             frmTKSVH frmTKSVHmn = new frmTKSVH();
+            this.TopMost = false;
             frmTKSVHmn.ShowDialog();
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             frmTKTV frmTKTVmn = new frmTKTV();
+            this.TopMost = false;
             frmTKTVmn.ShowDialog();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             frmSHC frmSHCmn = new frmSHC();
+            this.TopMost = false;
             frmSHCmn.ShowDialog();
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
             frmBHC frmBHCmn = new frmBHC();
+            this.TopMost = false;
             frmBHCmn.ShowDialog();
         }
     }
