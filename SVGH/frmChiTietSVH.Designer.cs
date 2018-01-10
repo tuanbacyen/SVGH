@@ -251,6 +251,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txt);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmChiTietSVH";
             this.Text = "Chi tiết sinh vật hại";
             this.Load += new System.EventHandler(this.frmChiTietSVH_Load);

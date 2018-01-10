@@ -34,28 +34,28 @@ namespace SVGH
         {
             frmTKSVH frmTKSVHmn = new frmTKSVH();
             this.TopMost = false;
-            frmTKSVHmn.ShowDialog();
+            frmTKSVHmn.Show();
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             frmTKTV frmTKTVmn = new frmTKTV();
             this.TopMost = false;
-            frmTKTVmn.ShowDialog();
+            frmTKTVmn.Show();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             frmSHC frmSHCmn = new frmSHC();
             this.TopMost = false;
-            frmSHCmn.ShowDialog();
+            frmSHCmn.Show();
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
             frmBHC frmBHCmn = new frmBHC();
             this.TopMost = false;
-            frmBHCmn.ShowDialog();
+            frmBHCmn.Show();
         }
     }
 }

@@ -46,6 +46,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -182,6 +185,7 @@
     <Content Include="Database\database.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\icon.ico" />
     <Content Include="Resources\imgdefault.jpg" />
     <Content Include="Resources\timkiemall.jpg" />
     <Content Include="Resources\timkiembenhhai.png" />

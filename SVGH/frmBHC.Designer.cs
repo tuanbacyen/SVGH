@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBHC));
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.imgLoad = new System.Windows.Forms.PictureBox();
@@ -35,11 +36,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbPVKC = new System.Windows.Forms.ComboBox();
             this.dtgBHC = new System.Windows.Forms.DataGridView();
-            this.TenVN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_BHChinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.TenVN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenCay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_BHChinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgLoad)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -134,6 +136,7 @@
             this.dtgBHC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgBHC.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TenVN,
+            this.TenCay,
             this.ID_BHChinh});
             this.dtgBHC.Location = new System.Drawing.Point(8, 57);
             this.dtgBHC.Margin = new System.Windows.Forms.Padding(2);
@@ -147,21 +150,6 @@
             this.dtgBHC.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgBHC_CellClick);
             this.dtgBHC.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgBHC_CellDoubleClick);
             this.dtgBHC.Sorted += new System.EventHandler(this.dtgBHC_Sorted);
-            // 
-            // TenVN
-            // 
-            this.TenVN.DataPropertyName = "TenVN";
-            this.TenVN.HeaderText = "Tên Việt Nam";
-            this.TenVN.Name = "TenVN";
-            this.TenVN.ReadOnly = true;
-            // 
-            // ID_BHChinh
-            // 
-            this.ID_BHChinh.DataPropertyName = "ID_BHChinh";
-            this.ID_BHChinh.HeaderText = "ID";
-            this.ID_BHChinh.Name = "ID_BHChinh";
-            this.ID_BHChinh.ReadOnly = true;
-            this.ID_BHChinh.Visible = false;
             // 
             // txtSearch
             // 
@@ -196,6 +184,28 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // TenVN
+            // 
+            this.TenVN.DataPropertyName = "TenVN";
+            this.TenVN.HeaderText = "Tên Việt Nam";
+            this.TenVN.Name = "TenVN";
+            this.TenVN.ReadOnly = true;
+            // 
+            // TenCay
+            // 
+            this.TenCay.DataPropertyName = "TenCay";
+            this.TenCay.HeaderText = "Tên cây bị hại";
+            this.TenCay.Name = "TenCay";
+            this.TenCay.ReadOnly = true;
+            // 
+            // ID_BHChinh
+            // 
+            this.ID_BHChinh.DataPropertyName = "ID_BHChinh";
+            this.ID_BHChinh.HeaderText = "ID";
+            this.ID_BHChinh.Name = "ID_BHChinh";
+            this.ID_BHChinh.ReadOnly = true;
+            this.ID_BHChinh.Visible = false;
+            // 
             // frmBHC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -204,6 +214,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmBHC";
             this.Text = "Tìm kiếm bệnh hại chính";
             this.Load += new System.EventHandler(this.frmBHC_Load);
@@ -230,6 +241,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenVN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenCay;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_BHChinh;
     }
 }

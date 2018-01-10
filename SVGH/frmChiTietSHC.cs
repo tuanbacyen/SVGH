@@ -32,7 +32,7 @@ namespace SVGH
         enum myTextContent { tenvn, tenvnk, tenkh, tenkhk, tenen, ho, bo };
         string[] textContent = { "Tên Việt Nam: ", "Tên Việt Nam khác: ", "Tên khoa học: ", "Tên khoa học khác: ", "Tên tiếng anh: ", "Họ: ", "Bộ: "};
 
-        int[] old = { 0, 6, 3, 2, 2, 2, 2, 2 };
+        int[] old = { 0, 3, 3, 2, 2, 2, 2, 2 };
         int[] oldContent = { 0, 1, 1, 1, 1, 1, 2, 1, 1};
         #endregion
 
@@ -96,10 +96,7 @@ namespace SVGH
         {
             ten = textTitle[(int)myTextTitle.tenloai] + Environment.NewLine +
                 "    " + textContent[(int)myTextContent.tenvn] + db.Rows[0][1].ToString() + Environment.NewLine +
-                "    " + textContent[(int)myTextContent.tenvnk] + "" + Environment.NewLine +
-                "    " + textContent[(int)myTextContent.tenkh] + db.Rows[0][2].ToString() + Environment.NewLine +
-                "    " + textContent[(int)myTextContent.tenkhk] + "" + Environment.NewLine +
-                "    " + textContent[(int)myTextContent.tenen] + "" + Environment.NewLine;
+                "    " + textContent[(int)myTextContent.tenkh] + db.Rows[0][2].ToString() + Environment.NewLine;
 
             vitriPL = textTitle[(int)myTextTitle.vtpl] + Environment.NewLine +
                 "    " + textContent[(int)myTextContent.ho] + db.Rows[0][4].ToString() + Environment.NewLine +

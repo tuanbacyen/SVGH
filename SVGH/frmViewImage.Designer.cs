@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmViewImage));
             this.imgBigShow = new System.Windows.Forms.PictureBox();
             this.panel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -87,6 +88,7 @@
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.imgBigShow);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmViewImage";
             this.Text = "Thông tin ảnh";
             this.Load += new System.EventHandler(this.frmViewImage_Load);

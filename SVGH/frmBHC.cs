@@ -81,12 +81,12 @@ namespace SVGH
                 idCay = cbPVKC.SelectedValue.ToString();
             }
 
-            string sql = "SELECT ID_BHChinh,TenVN FROM tblBHChinh ";
+            string sql = "SELECT ID_BHChinh,tblBHChinh.TenVN,tblCay.TenCay FROM tblBHChinh INNER JOIN tblCay ON tblBHChinh.ID_Cay = tblCay.ID_Cay ";
             bool check = false;
 
             if (idCay != "all" && idCay != "")
             {
-                sql = sql + " where ID_Cay = '" + idCay + "' ";
+                sql = sql + " where tblCay.ID_Cay = '" + idCay + "' ";
                 check = true;
             }
 
