@@ -257,7 +257,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button2);
             this.Name = "frmSHC";
-            this.Text = "frmSHC";
+            this.Text = "Tìm kiếm sâu hại chính";
             this.Load += new System.EventHandler(this.frmSHC_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

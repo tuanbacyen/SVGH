@@ -409,7 +409,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "frmTKSVH";
-            this.Text = "frmTKSVH";
+            this.Text = "Tìm kiếm sinh vật hại";
             this.Load += new System.EventHandler(this.frmTKSVH_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

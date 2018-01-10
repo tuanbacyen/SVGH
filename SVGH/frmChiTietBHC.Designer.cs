@@ -239,7 +239,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "frmChiTietBHC";
-            this.Text = "frmChiTietBHC";
+            this.Text = "Chi tiết bệnh hại chính";
             this.Load += new System.EventHandler(this.frmChiTietBHC_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

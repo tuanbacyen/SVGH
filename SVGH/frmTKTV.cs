@@ -232,5 +232,14 @@ namespace SVGH
                 loadData();
             }
         }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+
+            {
+                loadData();
+            }
+        }
     }
 }

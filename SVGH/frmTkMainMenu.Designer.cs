@@ -187,7 +187,7 @@
             this.MinimizeBox = false;
             this.Name = "frmTkMainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmTkMainMenu";
+            this.Text = "Chức năng tìm kiếm";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

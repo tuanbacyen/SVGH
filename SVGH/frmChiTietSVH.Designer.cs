@@ -252,7 +252,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txt);
             this.Name = "frmChiTietSVH";
-            this.Text = "frmChiTietSVH";
+            this.Text = "Chi tiết sinh vật hại";
             this.Load += new System.EventHandler(this.frmChiTietSVH_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

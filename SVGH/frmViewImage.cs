@@ -61,7 +61,6 @@ namespace SVGH
                     {
                         imgBigShow.Image = pic.Image;
                         lblName.Text = db.Rows[0][1].ToString();
-                        lblDec.Text = db.Rows[0][2].ToString();
                     }
                 }
                 catch (Exception ex)
@@ -80,7 +79,6 @@ namespace SVGH
         {
             PictureBox picI = (sender as PictureBox);
             lblName.Text = db.Rows[int.Parse(picI.Name)][1].ToString();
-            lblDec.Text = db.Rows[int.Parse(picI.Name)][2].ToString();
             try
             {
                 imgBigShow.Image = picI.Image;

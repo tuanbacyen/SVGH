@@ -70,5 +70,10 @@ namespace SVGH
             frmTKTV frmTKSVHmn = new frmTKTV();
             frmTKSVHmn.ShowDialog();
         }
+
+        private void hướngDẫnSửDụngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

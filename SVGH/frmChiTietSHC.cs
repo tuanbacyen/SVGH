@@ -29,11 +29,11 @@ namespace SVGH
 
         enum myTextTitle { tenloai, vtpl, phanbo, ddgh, ddht, ddsh, bppc };
         string[] textTitle = { "Tên Loài", "Vị trí phân loại", "Phân bố", "Đặc điểm gây hại", "Đặc điểm hình thái", "Đặc điểm sinh học, sinh thái", "Biện pháp phòng chống" };
-        enum myTextContent { tenvn, tenvnk, tenkh, tenkhk, tenen, ho, bo, lop, nganh };
-        string[] textContent = { "Tên Việt Nam: ", "Tên Việt Nam khác: ", "Tên khoa học: ", "Tên khoa học khác: ", "Tên tiếng anh: ", "Họ: ", "Bộ: ", "Lớp: ", "Ngành: " };
+        enum myTextContent { tenvn, tenvnk, tenkh, tenkhk, tenen, ho, bo };
+        string[] textContent = { "Tên Việt Nam: ", "Tên Việt Nam khác: ", "Tên khoa học: ", "Tên khoa học khác: ", "Tên tiếng anh: ", "Họ: ", "Bộ: "};
 
-        int[] old = { 0, 6, 5, 2, 2, 2, 2, 2 };
-        int[] oldContent = { 0, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1 };
+        int[] old = { 0, 6, 3, 2, 2, 2, 2, 2 };
+        int[] oldContent = { 0, 1, 1, 1, 1, 1, 2, 1, 1};
         #endregion
 
         public frmChiTietSHC(string id)
@@ -103,9 +103,7 @@ namespace SVGH
 
             vitriPL = textTitle[(int)myTextTitle.vtpl] + Environment.NewLine +
                 "    " + textContent[(int)myTextContent.ho] + db.Rows[0][4].ToString() + Environment.NewLine +
-                "    " + textContent[(int)myTextContent.bo] + db.Rows[0][3].ToString() + Environment.NewLine +
-                "    " + textContent[(int)myTextContent.lop] + "" + Environment.NewLine +
-                "    " + textContent[(int)myTextContent.nganh] + "" + Environment.NewLine;
+                "    " + textContent[(int)myTextContent.bo] + db.Rows[0][3].ToString() + Environment.NewLine;
 
             phanbo = textTitle[(int)myTextTitle.phanbo] + Environment.NewLine;
             if (db.Rows[0][5].ToString() != "")

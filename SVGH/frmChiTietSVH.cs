@@ -98,10 +98,10 @@ namespace SVGH
                     "    " + textContent[(int)myTextContent.tenen] + db.Rows[0]["TenEN"].ToString() + Environment.NewLine;
 
             vitriPL = textTitle[(int)myTextTitle.vtpl] + Environment.NewLine +
-                "    " + db.Rows[0]["Ho"].ToString() + Environment.NewLine +
-                "    " + db.Rows[0]["Bo"].ToString() + Environment.NewLine +
+                "    " + db.Rows[0]["Nganh"].ToString() + Environment.NewLine +
                 "    " + db.Rows[0]["Lop"].ToString() + Environment.NewLine +
-                "    " + db.Rows[0]["Nganh"].ToString() + Environment.NewLine;
+                "    " + db.Rows[0]["Bo"].ToString() + Environment.NewLine +
+                "    " + db.Rows[0]["Ho"].ToString() + Environment.NewLine;
 
             phanbo = textTitle[(int)myTextTitle.phanbo] + Environment.NewLine;
             if (db.Rows[0]["Dia_Diem_PH"].ToString() != "")

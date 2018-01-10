@@ -31,7 +31,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.hệThốngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thoátKhỏiTrươngTrìnhToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nhậpDữLiệuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tìmKiếmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thựcĐơnChínhToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -50,7 +49,6 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.hệThốngToolStripMenuItem,
-            this.nhậpDữLiệuToolStripMenuItem,
             this.tìmKiếmToolStripMenuItem,
             this.trợGiúpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -73,12 +71,6 @@
             this.thoátKhỏiTrươngTrìnhToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
             this.thoátKhỏiTrươngTrìnhToolStripMenuItem.Text = "Thoát khỏi trương trình";
             this.thoátKhỏiTrươngTrìnhToolStripMenuItem.Click += new System.EventHandler(this.thoátKhỏiTrươngTrìnhToolStripMenuItem_Click);
-            // 
-            // nhậpDữLiệuToolStripMenuItem
-            // 
-            this.nhậpDữLiệuToolStripMenuItem.Name = "nhậpDữLiệuToolStripMenuItem";
-            this.nhậpDữLiệuToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
-            this.nhậpDữLiệuToolStripMenuItem.Text = "Nhập dữ liệu";
             // 
             // tìmKiếmToolStripMenuItem
             // 
@@ -153,6 +145,7 @@
             this.hướngDẫnSửDụngToolStripMenuItem.Name = "hướngDẫnSửDụngToolStripMenuItem";
             this.hướngDẫnSửDụngToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.hướngDẫnSửDụngToolStripMenuItem.Text = "Hướng dẫn sử dụng";
+            this.hướngDẫnSửDụngToolStripMenuItem.Click += new System.EventHandler(this.hướngDẫnSửDụngToolStripMenuItem_Click);
             // 
             // giớiThiệuPhầnMềmToolStripMenuItem
             // 
@@ -168,7 +161,8 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
-            this.Text = "Main";
+            this.Text = "Dữ liệu sinh vật hại và thiên địch trên một số cây trồng và sản phẩm sau thu hoạc" +
+    "h ở Việt Nam";
             this.Load += new System.EventHandler(this.Main_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -181,7 +175,6 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem hệThốngToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem nhậpDữLiệuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tìmKiếmToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thựcĐơnChínhToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;

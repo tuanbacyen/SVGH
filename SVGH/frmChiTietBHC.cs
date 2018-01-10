@@ -25,12 +25,9 @@ namespace SVGH
         string id = "";
 
         enum myTextTitle { tenloai, nn, tc, ddps, bppc };
-        string[] textTitle = { "Tên Loài", "Nguyên nhân", "Triệu chứng", "Đặc điểm phát sinh", "Biện pháp phòng chánh" };
+        string[] textTitle = { "Tên Bệnh: ", "Nguyên nhân", "Triệu chứng", "Đặc điểm phát sinh", "Biện pháp phòng chánh" };
 
-        enum myTextContent { tenvn };
-        string[] textContent = { "Tên Việt Nam: " };
-
-        int[] old = { 0, 2, 2, 2, 2, 2 };
+        int[] old = { 0, 1, 2, 2, 2, 2 };
         int[] oldContent = { 0, 1};
         #endregion
 
@@ -66,8 +63,7 @@ namespace SVGH
 
         private void getData()
         {
-            ten = textTitle[(int)myTextTitle.tenloai] + Environment.NewLine +
-                "    " + textContent[(int)myTextContent.tenvn] + db.Rows[0][1].ToString() + Environment.NewLine;
+            ten = textTitle[(int)myTextTitle.tenloai] + db.Rows[0][1].ToString() + Environment.NewLine;
 
             nn = textTitle[(int)myTextTitle.nn] + Environment.NewLine;
             if (db.Rows[0][2].ToString() != "")
@@ -155,19 +151,19 @@ namespace SVGH
                 }
             }
 
-            int wrapContent = 2;
-            for (int i = 0; i < textContent.Length; i++)
-            {
-                int start = data.IndexOf(textContent[i]);
-                if (start != -1)
-                {
-                    start -= wrapContent;
-                    wrapContent += oldContent[i + 1];
-                    txt.Select(start, textContent[i].Length);
-                    txt.SelectionColor = Color.Blue;
-                    txt.SelectionFont = new Font(txt.Font.Name, 17, FontStyle.Bold);
-                }
-            }
+            //int wrapContent = 2;
+            //for (int i = 0; i < textContent.Length; i++)
+            //{
+            //    int start = data.IndexOf(textContent[i]);
+            //    if (start != -1)
+            //    {
+            //        start -= wrapContent;
+            //        wrapContent += oldContent[i + 1];
+            //        txt.Select(start, textContent[i].Length);
+            //        txt.SelectionColor = Color.Blue;
+            //        txt.SelectionFont = new Font(txt.Font.Name, 17, FontStyle.Bold);
+            //    }
+            //}
         }
 
         private void getAll()
