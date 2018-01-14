@@ -101,7 +101,7 @@ namespace SVGH
         private void xemct(int iex)
         {
             frmChiTietSHC mfrmChiTiet = new frmChiTietSHC(dtgSHC.Rows[iex].Cells["ID_SHChinh"].Value.ToString());
-            mfrmChiTiet.ShowDialog();
+            mfrmChiTiet.Show();
         }
 
         private void showdata()

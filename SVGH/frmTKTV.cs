@@ -32,7 +32,7 @@ namespace SVGH
             if(idex != -1)
             {
                 frmChiTietSVH mfrmChiTiet = new frmChiTietSVH(dtg.Rows[iex].Cells["ID_SVH"].Value.ToString());
-                mfrmChiTiet.ShowDialog();
+                mfrmChiTiet.Show();
             }
         }
 

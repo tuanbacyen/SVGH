@@ -75,7 +75,7 @@ namespace SVGH
         private void btnA_Click(object sender, EventArgs e)
         {
             frmViewImage mfrmViewImage = new frmViewImage(this.id, 0);
-            mfrmViewImage.ShowDialog();
+            mfrmViewImage.Show();
         }
 
         private void frmChiTietSVH_Load(object sender, EventArgs e)

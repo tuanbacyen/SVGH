@@ -43,36 +43,68 @@ namespace SVGH
 
         private void tìmKiếmSâuHạiChínhToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmSHC frmSHCmn = new frmSHC();
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.GetType() == typeof(frmSHC))
+                {
+                    form.Close();
+                    break;
+                }
+            }
             if ((Application.OpenForms["frmSHC"] as frmSHC) == null)
             {
+                frmSHC frmSHCmn = new frmSHC();
                 frmSHCmn.Show();
             }
         }
 
         private void tìmKiếmBệnhHạiChínhToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmBHC frmBHCmn = new frmBHC();
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.GetType() == typeof(frmBHC))
+                {
+                    form.Close();
+                    break;
+                }
+            }
             if ((Application.OpenForms["frmBHC"] as frmBHC) == null)
             {
+                frmBHC frmBHCmn = new frmBHC();
                 frmBHCmn.Show();
             }
         }
 
         private void tìmKiếmSinhVậtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmTKSVH frmTKSVHmn = new frmTKSVH();
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.GetType() == typeof(frmTKSVH))
+                {
+                    form.Close();
+                    break;
+                }
+            }
             if ((Application.OpenForms["frmTKSVH"] as frmTKSVH) == null)
             {
+                frmTKSVH frmTKSVHmn = new frmTKSVH();
                 frmTKSVHmn.Show();
             }
         }
 
         private void tìmKiếmTheoVùngPhânBốToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmTKTV frmTKSVHmn = new frmTKTV();
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.GetType() == typeof(frmTKTV))
+                {
+                    form.Close();
+                    break;
+                }
+            }
             if ((Application.OpenForms["frmTKTV"] as frmTKTV) == null)
             {
+                frmTKTV frmTKSVHmn = new frmTKTV();
                 frmTKSVHmn.Show();
             }
         }

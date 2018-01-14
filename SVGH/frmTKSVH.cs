@@ -112,7 +112,7 @@ namespace SVGH
         private void xemct(int iex)
         {
             frmChiTietSVH mfrmChiTiet = new frmChiTietSVH(dtgSVH.Rows[iex].Cells["ID_SVH"].Value.ToString());
-            mfrmChiTiet.ShowDialog();
+            mfrmChiTiet.Show();
         }
 
         private void showdata()

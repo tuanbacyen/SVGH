@@ -83,7 +83,7 @@ namespace SVGH
         private void btnA_Click(object sender, EventArgs e)
         {
             frmViewImage mfrmViewImage = new frmViewImage(this.id, 1);
-            mfrmViewImage.ShowDialog();
+            mfrmViewImage.Show();
         }
 
         private void cbItem_CheckedChanged(object sender, EventArgs e)

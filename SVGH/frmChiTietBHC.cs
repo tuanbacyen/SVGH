@@ -180,7 +180,7 @@ namespace SVGH
         private void btnA_Click(object sender, EventArgs e)
         {
             frmViewImage mfrmViewImage = new frmViewImage(this.id, 2);
-            mfrmViewImage.ShowDialog();
+            mfrmViewImage.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
