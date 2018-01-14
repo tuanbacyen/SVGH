@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SVGH.MySystem;
 
 namespace SVGH
 {
@@ -16,25 +15,20 @@ namespace SVGH
         public Main()
         {
             InitializeComponent();
-            this.WindowState = FormWindowState.Maximized;
         }
 
         private void Main_Load(object sender, EventArgs e)
         {
-            Screen scr = Screen.PrimaryScreen;
-            this.Left = (scr.WorkingArea.Width - this.Width) / 2;
-            this.Top = (scr.WorkingArea.Height - this.Height) / 2;
-
-            //
             openNewForm();
         }
 
         private void openNewForm()
         {
-            //this.Hide();
             frmTkMainMenu tkMainMenu1 = new frmTkMainMenu();
-            //tkMainMenu1.Closed += (s, args) => this.Close();
-            tkMainMenu1.Show();
+            if ((Application.OpenForms["frmTkMainMenu"] as frmTkMainMenu) == null)
+            {
+                tkMainMenu1.Show(this);
+            }
         }
 
         private void thoátKhỏiTrươngTrìnhToolStripMenuItem_Click(object sender, EventArgs e)
@@ -50,28 +44,45 @@ namespace SVGH
         private void tìmKiếmSâuHạiChínhToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmSHC frmSHCmn = new frmSHC();
-            frmSHCmn.ShowDialog();
+            if ((Application.OpenForms["frmSHC"] as frmSHC) == null)
+            {
+                frmSHCmn.Show();
+            }
         }
 
         private void tìmKiếmBệnhHạiChínhToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmBHC frmBHCmn = new frmBHC();
-            frmBHCmn.ShowDialog();
+            if ((Application.OpenForms["frmBHC"] as frmBHC) == null)
+            {
+                frmBHCmn.Show();
+            }
         }
 
         private void tìmKiếmSinhVậtToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmTKSVH frmTKSVHmn = new frmTKSVH();
-            frmTKSVHmn.ShowDialog();
+            if ((Application.OpenForms["frmTKSVH"] as frmTKSVH) == null)
+            {
+                frmTKSVHmn.Show();
+            }
         }
 
         private void tìmKiếmTheoVùngPhânBốToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmTKTV frmTKSVHmn = new frmTKTV();
-            frmTKSVHmn.ShowDialog();
+            if ((Application.OpenForms["frmTKTV"] as frmTKTV) == null)
+            {
+                frmTKSVHmn.Show();
+            }
         }
 
         private void hướngDẫnSửDụngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void saoLưuHệThốngToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }

@@ -77,7 +77,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::SVGH.Properties.Resources.timkiembenhhai;
+            this.pictureBox2.Image = global::SVGH.Properties.Resources.sauhai;
             this.pictureBox2.Location = new System.Drawing.Point(40, 108);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
@@ -99,7 +99,7 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::SVGH.Properties.Resources.timkiemnangcao;
+            this.pictureBox4.Image = global::SVGH.Properties.Resources.benhhai;
             this.pictureBox4.Location = new System.Drawing.Point(173, 108);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";

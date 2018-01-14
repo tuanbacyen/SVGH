@@ -1,5 +1,4 @@
-﻿using SVGH.Database;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -55,6 +54,7 @@ namespace SVGH
 
         private void frmChiTietBHC_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
             string sql = "SELECT * FROM tblBHChinh where ID_BHChinh = " + id;
             db = database_helper.GetDataTable(sql);
 

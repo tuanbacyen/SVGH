@@ -61,6 +61,26 @@ namespace SVGH.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap background {
+            get {
+                object obj = ResourceManager.GetObject("background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap benhhai {
+            get {
+                object obj = ResourceManager.GetObject("benhhai", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon icon {
@@ -76,6 +96,16 @@ namespace SVGH.Properties {
         internal static System.Drawing.Bitmap imgdefault {
             get {
                 object obj = ResourceManager.GetObject("imgdefault", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sauhai {
+            get {
+                object obj = ResourceManager.GetObject("sauhai", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

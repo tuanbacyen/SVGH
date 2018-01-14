@@ -1,5 +1,4 @@
-﻿using SVGH.Database;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,7 +24,7 @@ namespace SVGH
 
         string id = "";
         enum myTextTitle { tenloai, vtpl, bophanbihai, qhddvsh, nsh, phanbo, tgph, ttph, };
-        string[] textTitle = { "Tên Loài", "Vị trí phân loại", "Bộ phận bị hại", "Quan hệ dinh dưỡng với sâu hại", "Nhóm sâu hại", "Phân bố", "Thời gian phát hiện", "Tình trạng phát hiện" };
+        string[] textTitle = { "Tên Loài", "Vị trí phân loại", "Bộ phận bị hại", "Quan hệ dinh dưỡng với sâu hại", "Nhóm sâu hại", "Phân bố", "Thời gian phát hiện và thu mẫu", "Tình trạng phát hiện" };
 
         enum myTextContent { tenvn, tenvnk, tenkh, tenkhk, tenen };
         string[] textContent = { "Tên Việt Nam: ", "Tên Việt Nam khác: ", "Tên khoa học: ", "Tên khoa học khác: ", "Tên tiếng anh: " };
@@ -81,6 +80,7 @@ namespace SVGH
 
         private void frmChiTietSVH_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
             string sql = "SELECT * FROM tblSVH where ID_SVH = " + id;
             db = database_helper.GetDataTable(sql);
             getData();

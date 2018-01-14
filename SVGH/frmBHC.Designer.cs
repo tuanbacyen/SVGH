@@ -36,12 +36,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbPVKC = new System.Windows.Forms.ComboBox();
             this.dtgBHC = new System.Windows.Forms.DataGridView();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.TenVN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenCay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID_BHChinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgLoad)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -151,6 +151,28 @@
             this.dtgBHC.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgBHC_CellDoubleClick);
             this.dtgBHC.Sorted += new System.EventHandler(this.dtgBHC_Sorted);
             // 
+            // TenVN
+            // 
+            this.TenVN.DataPropertyName = "TenVN";
+            this.TenVN.HeaderText = "Tên Việt Nam";
+            this.TenVN.Name = "TenVN";
+            this.TenVN.ReadOnly = true;
+            // 
+            // TenCay
+            // 
+            this.TenCay.DataPropertyName = "TenCay";
+            this.TenCay.HeaderText = "Tên cây bị hại";
+            this.TenCay.Name = "TenCay";
+            this.TenCay.ReadOnly = true;
+            // 
+            // ID_BHChinh
+            // 
+            this.ID_BHChinh.DataPropertyName = "ID_BHChinh";
+            this.ID_BHChinh.HeaderText = "ID";
+            this.ID_BHChinh.Name = "ID_BHChinh";
+            this.ID_BHChinh.ReadOnly = true;
+            this.ID_BHChinh.Visible = false;
+            // 
             // txtSearch
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -183,28 +205,6 @@
             this.button2.Text = "Đóng";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // TenVN
-            // 
-            this.TenVN.DataPropertyName = "TenVN";
-            this.TenVN.HeaderText = "Tên Việt Nam";
-            this.TenVN.Name = "TenVN";
-            this.TenVN.ReadOnly = true;
-            // 
-            // TenCay
-            // 
-            this.TenCay.DataPropertyName = "TenCay";
-            this.TenCay.HeaderText = "Tên cây bị hại";
-            this.TenCay.Name = "TenCay";
-            this.TenCay.ReadOnly = true;
-            // 
-            // ID_BHChinh
-            // 
-            this.ID_BHChinh.DataPropertyName = "ID_BHChinh";
-            this.ID_BHChinh.HeaderText = "ID";
-            this.ID_BHChinh.Name = "ID_BHChinh";
-            this.ID_BHChinh.ReadOnly = true;
-            this.ID_BHChinh.Visible = false;
             // 
             // frmBHC
             // 
